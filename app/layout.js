@@ -12,7 +12,7 @@ export const metadata = {
     default: "Saranda House | IITM BS",
   },
   description: "Saranda, a house at IIT Madras BS program, fosters creativity and innovation through meetups, workshops, tech showcases, eSports, and cultural events.",
-  authors: [{ name: "Sovit" }],
+  authors: [{ name: "Sovit", url: "https://www.linkedin.com/in/5ovit/" }],
   creator: "Saranda WebOps Team",
   keywords: [
     'Saranda', 'House', 'IIT Madras', 'BS Program', 'Community', 'Meetups',
