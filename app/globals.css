@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+@theme inline {
+  --font-primary: var(--font-redwood);
+  --font-secondary: var(--font-roboto);
+}
+
+@layer base {
+  * {
+    @apply font-secondary;
+  }
+
+  h1, h2, h3, h4, h5, h6, button {
+    @apply font-primary;
+  }
+}

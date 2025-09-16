@@ -1,10 +1,17 @@
 import { Roboto } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const roboto = Roboto({
   subsets: ["latin"],
   fallback: ["Helvetica", "Arial", "sans-serif"],
+  variable: "--font-roboto",
 });
+
+const redwood = localFont({
+  src: "../public/fonts/Realwood Regular.otf",
+  variable: "--font-redwood",
+})
 
 export const metadata = {
   title: {
@@ -22,8 +29,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={roboto.className}>
+    <html lang="en" className={`${roboto.variable} ${redwood.variable}`}>
+      <body>
         {children}
       </body>
     </html>
