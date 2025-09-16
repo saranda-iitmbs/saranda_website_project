@@ -14,3 +14,11 @@
     @apply font-primary;
   }
 }
+
+@theme {
+  --color-primary: oklch(0.4002 0.06 151.15);
+  --color-secondary: oklch(0.9069 0.1869 102.87);
+  --color-neutral-light: oklch(0.985 0 0);
+  --color-neutral-dark: oklch(0.2631 0.026 140.39);
+  --color-neutral-dark-glass: oklch(0.2631 0.026 140.39 / 0.8);
+}
