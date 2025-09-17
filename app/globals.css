@@ -4,6 +4,13 @@
   --font-primary: var(--font-redwood);
   --font-secondary: var(--font-roboto);
 }
+@theme {
+  --color-primary: oklch(0.4002 0.06 151.15);
+  --color-secondary: oklch(0.9069 0.1869 102.87);
+  --color-neutral-light: oklch(0.985 0 0);
+  --color-neutral-dark: oklch(0.2631 0.026 140.39);
+  --color-neutral-dark-glass: oklch(0.2631 0.026 140.39 / 0.8);
+}
 
 @layer base {
   * {
@@ -13,12 +20,23 @@
   h1, h2, h3, h4, h5, h6, button {
     @apply font-primary;
   }
-}
 
-@theme {
-  --color-primary: oklch(0.4002 0.06 151.15);
-  --color-secondary: oklch(0.9069 0.1869 102.87);
-  --color-neutral-light: oklch(0.985 0 0);
-  --color-neutral-dark: oklch(0.2631 0.026 140.39);
-  --color-neutral-dark-glass: oklch(0.2631 0.026 140.39 / 0.8);
+  h1 {
+    @apply text-7xl md:text-8xl lg:text-9xl 2xl:text-[10rem]
+  }
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl 2xl:text-7xl
+  }
+  h3 {
+    @apply text-2xl md:text-3xl lg:text-4xl
+  }
+  button {
+    @apply text-xl 2xl:text-2xl
+  }
+  p {
+    @apply text-base 2xl:text-lg
+  }
+  footer a {
+    @apply text-sm 2xl:text-base
+  }
 }
