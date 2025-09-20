@@ -1,9 +1,10 @@
 import LandingPageSections from "@/components/ui/LandingPageSections";
 import AboutSection from "@/components/ui/AboutSection";
+import Hero from "@/components/ui/Hero";
 
 export default function Home() {
   return <>
-    <div className="h-dvh" id="hero"></div>
+    <Hero />
     <LandingPageSections>
       <AboutSection />
       <div className="featured-section"></div>
