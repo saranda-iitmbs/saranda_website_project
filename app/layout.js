@@ -2,6 +2,8 @@ import { Roboto } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
+import Footer from "@/components/layout/Footer";
+
 const roboto = Roboto({
   subsets: ["latin"],
   fallback: ["Helvetica", "Arial", "sans-serif"],
@@ -32,6 +34,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${roboto.variable} ${redwood.variable}`}>
       <body>
         {children}
+        <Footer />
       </body>
     </html>
   );

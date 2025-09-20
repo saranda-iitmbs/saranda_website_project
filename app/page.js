@@ -10,6 +10,5 @@ export default function Home() {
       <div className="featured-section"></div>
       <div className="communities-section"></div>
     </LandingPageSections>
-    <div className="h-dvh" id="someplaceholderfortesting"></div>
   </>
 }
