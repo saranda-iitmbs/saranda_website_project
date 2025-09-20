@@ -21,7 +21,7 @@ export default function AboutSection({
           bg-neutral-dark-glass rounded-lg text-neutral-light lg:px-[5rem]
           lg:py-[4rem] md:px-[3rem] md:py-[2rem] px-[1rem] py-[2rem] grid
           grid-cols-1 md:grid-cols-2 gap-[1rem] lg:gap-[2rem] max-w-[120ch]
-          relative
+          relative backdrop-blur-sm
         "
         style={{"direction": "rtl"}}
       >
