@@ -1,7 +1,7 @@
 import Image from "next/image";
 import mist_forest_img from "@/public/images/mist_forest2.png";
 import lone_tree_img from "@/public/images/lone_tree.png";
-import { LandingPageSectionsBgAnimation } from "@/components/gsapanimations/LandingPageAnimations";
+import { LandingPageSectionsBgAnimation } from "@/components/gsapanimations/LandingPageBgAnimations";
 
 export default function LandingPageSections({
   className = "",
@@ -38,6 +38,10 @@ export default function LandingPageSections({
       {children}
     </main>
 
-    <LandingPageSectionsBgAnimation/>
+    <LandingPageSectionsBgAnimation
+      landing_page_sections_id = {landing_page_sections_id}
+      landing_page_bg_container_id = {landing_page_bg_container_id}
+      lone_tree_img_id = {lone_tree_img_id}
+    />
   </>
 }
