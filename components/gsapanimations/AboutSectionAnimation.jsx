@@ -14,8 +14,8 @@ export default function AboutSEctionAnimation({
   useGSAP(() => {
     const st_vars = {
       trigger: "#" + about_section_id,
-      scrub: true,
-      start: "top 40%",
+      scrub: 1,
+      start: `top ${document.innerWidth >= document.innerHeight ? 40 : 80}%`,
       end: "top 15%",
     }
 

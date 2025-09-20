@@ -25,7 +25,7 @@ export function LandingPageSectionsBgAnimation({
     gsap.timeline({
       scrollTrigger: {
         trigger: sections_ref,
-        scrub: true,
+        scrub: 1,
         start: `${100*(1/childCount).toFixed(4)}% 100%`,
         end: `${100*(1-1/childCount).toFixed(4)}% 0%`,
       }
