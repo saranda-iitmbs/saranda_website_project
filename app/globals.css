@@ -31,7 +31,7 @@
     @apply text-2xl md:text-3xl lg:text-4xl
   }
   button {
-    @apply text-xl 2xl:text-2xl
+    @apply text-xl 2xl:text-2xl cursor-pointer
   }
   p {
     @apply text-base 2xl:text-lg
