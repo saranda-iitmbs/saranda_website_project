@@ -17,7 +17,7 @@ export default function HeroAnimation({
       duration: 1,
       delay: 0.2,
       scale: 0.6,
-      ease: "power4.out",
+      ease: "expo",
     })
 
     const st_vars = {
