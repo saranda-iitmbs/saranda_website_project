@@ -13,7 +13,7 @@ export default function Footer() {
   return <>
     <footer
       className="
-        py-[2.25rem] px-[2rem] bg-neutral-dark text-neutral-light
+        pt-[2.25rem] px-[2rem] bg-neutral-dark text-neutral-light
       "
     >
       <div className="
@@ -47,6 +47,9 @@ export default function Footer() {
           )} </ul>
         </div>
       </div>
+      <p className="text-center mt-[1rem] mx-[-1rem]">
+        &copy; 2025 Saranda WebOps Team &middot; MIT Licensed
+      </p>
     </footer>
   </>
 }
