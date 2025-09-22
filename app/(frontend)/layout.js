@@ -11,7 +11,7 @@ const roboto = Roboto({
 });
 
 const redwood = localFont({
-  src: "../public/fonts/Realwood Regular.otf",
+  src: "../../public/fonts/Realwood Regular.otf",
   variable: "--font-redwood",
 })
 
