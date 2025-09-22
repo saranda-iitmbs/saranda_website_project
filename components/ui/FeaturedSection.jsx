@@ -24,10 +24,10 @@ export default function FeaturedSection() {
 function PhotoGrid({img_urls}) {
   return <>
     <div className="
-      h-full md:h-8/10 w-full md:w-8/10 grid grid-cols-5 grid-rows-4 gap-1
-      *:border-4 *:border-neutral-light [&_img]:w-full [&_img]:h-full
+      h-full md:h-8/10 w-full md:w-8/10 xl:w-6/10 grid grid-cols-5 grid-rows-4
+      gap-1 *:border-4 *:border-neutral-light [&_img]:w-full [&_img]:h-full
       [&_img]:object-cover *:z-1 md:*:hover:[scale:120%] *:duration-200
-      max-w-[120ch] **:rounded-xl mx-2
+      **:rounded-xl mx-2
     ">
       <div className="
         md:[grid-area:1/1/3/3] md:hover:-translate-x-1/10
@@ -79,15 +79,15 @@ function CTAContainer() {
       items-center
     ">
       <div className="
-        h-60 w-60 bg-neutral-dark-glass rounded-xl rotate-45
+        h-50 w-50 xl:w-60 xl:h-60 bg-neutral-dark-glass rounded-xl rotate-45
         backdrop-blur-sm flex justify-center items-center z-10 lg:scale-110
       ">
         <div className="
           -rotate-45 w-9/10 h-1/2 text-center
           text-neutral-light flex flex-col justify-center items-center
         ">
-          <p>Check Out our</p>
-          <div className="flex gap-[1ch] items-center">
+          <p>Check out our</p>
+          <div className="flex gap-[1ch] items-center text-nowrap">
             <CTAButton href="/events">Events</CTAButton>
             &
             <CTAButton href="/meetups">Meet Ups</CTAButton>

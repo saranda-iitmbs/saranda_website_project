@@ -22,7 +22,7 @@
   }
 
   h1 {
-    @apply text-7xl md:text-8xl lg:text-9xl 2xl:text-[10rem]
+    @apply text-8xl md:text-8xl lg:text-9xl 2xl:text-[10rem]
   }
   h2 {
     @apply text-3xl md:text-4xl lg:text-5xl 2xl:text-7xl
@@ -37,6 +37,6 @@
     @apply text-base 2xl:text-lg
   }
   footer a {
-    @apply text-sm 2xl:text-base
+    @apply text-sm 2xl:text-base hover:underline active:underline
   }
 }
