@@ -17,6 +17,9 @@ export default defineType({
       type: "image",
       title: "Photo",
       validation: rule => rule.required(),
+      options: {
+        hotspot: true,
+      }
     }),
     defineField({
       name: "slug",

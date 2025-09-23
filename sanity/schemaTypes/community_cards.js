@@ -17,20 +17,23 @@ export default defineType({
       name: "description",
       type: "string",
       title: "A short description for the community(optional)",
-      validation: rule => rule.max(150),
+      validation: rule => rule.max(180),
     }),
     defineField({
       name: "image",
       type: "image",
       title: "Poster",
       validation: rule => rule.required(),
+      options: {
+        hotspot: true,
+      }
     }),
     defineField({
       name: "slug",
       type: "slug",
       validation: rule => rule.required(),
       options: {
-        source: (doc, options) => doc.description || doc._id,
+        source: (doc, options) => doc.title || doc._id,
       }
     })
   ],
