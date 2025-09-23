@@ -1,33 +1,21 @@
 import Image from "next/image"
 import Link from "next/link"
+import { client } from "@/sanity/lib/client";
 
-export default function CommunitiesSection(
+const CARDS_QUERY = `
+  *[_type == "community_cards"] | order(_createdAt asc) {
+    title,
+    description,
+    href,
+    "img_src": image.asset->url,
+  }
+`
+
+export default async function CommunitiesSection(
   className = ""
 ) {
   const communities_section_id = "communities_section_id"
-
-  const cards_data = [
-    {
-      "title": "Culturals",
-      "description": "\
-        Saranda House Culturals at IITM BS fosters creativity and talent\
-        through diverse events in music, dance, drama, and art, uniting\
-        members with inclusivity and innovation.\
-      ",
-      "href": "/community/culturals",
-      "img_src": "https://placehold.co/400/111/222/png"
-    },
-    {
-      "title": "eSports",
-      "description": "\
-        Saranda eSports Community Saranda eSports Community Saranda eSports\
-        Community Saranda eSports Community Saranda eSports Community Saranda\
-        eSports Community Saranda eSports Community\
-      ",
-      "href": "/community/esports",
-      "img_src": "https://placehold.co/400/111/222/png"
-    }
-  ]
+  const cards_data = await client.fetch(CARDS_QUERY, {})
 
   return <>
     <div
