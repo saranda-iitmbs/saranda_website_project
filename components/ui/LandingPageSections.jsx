@@ -10,6 +10,7 @@ export default function LandingPageSections({
   const landing_page_sections_id = "landing_page_sections_id"
   const landing_page_bg_container_id = "landing_page_bg_container_id"
   const lone_tree_img_id = "lone_tree_img_id"
+  const mist_forest_img_id = "mist_forest_img_id"
 
   return <>
     <main
@@ -23,10 +24,11 @@ export default function LandingPageSections({
         id={landing_page_bg_container_id}
       >
         <Image
+          id={mist_forest_img_id}
           src={mist_forest_img}
           alt="Forest Background"
           fill
-          className="object-cover h-dvh w-screen"
+          className="object-cover h-dvh w-screen scale-125"
         ></Image>
         <Image
           src={lone_tree_img}
@@ -42,6 +44,7 @@ export default function LandingPageSections({
       landing_page_sections_id = {landing_page_sections_id}
       landing_page_bg_container_id = {landing_page_bg_container_id}
       lone_tree_img_id = {lone_tree_img_id}
+      mist_forest_img_id = {mist_forest_img_id}
     />
   </>
 }

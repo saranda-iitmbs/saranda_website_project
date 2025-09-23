@@ -26,51 +26,53 @@ export default async function FeaturedSection() {
 function PhotoGrid({img_urls}) {
   let index = 0
 
+  // FIX THIS MESS
+
   return <>
     <div className="
       h-full md:h-8/10 w-full md:w-8/10 xl:w-6/10 grid grid-cols-5 grid-rows-4
-      gap-1 *:border-4 *:border-neutral-light [&_img]:w-full [&_img]:h-full
+      gap-1 *:border-4 *:border-neutral-light
       [&_img]:object-cover *:z-1 md:*:hover:[scale:120%] *:duration-200
       **:rounded-xl mx-2
     ">
       <div className="
-        md:[grid-area:1/1/3/3] md:hover:-translate-x-1/10
-        md:hover:-translate-y-1/10 [grid-area:1/1/2/3]
+        landscape:[grid-area:1/1/3/3] landscape:hover:-translate-x-1/10
+        landscape:hover:-translate-y-1/10 [grid-area:1/1/2/3] relative
       ">
-        <Image src={img_urls[index++]} alt="Photo" width={400} height={400}/>
+        <Image src={img_urls[index++]} alt="Photo" fill/>
       </div>
       <div className="
-        md:[grid-area:1/3/3/6] md:hover:translate-x-1/10
-        md:hover:-translate-y-1/10 [grid-area:1/3/2/6]
+        landscape:[grid-area:1/3/3/6] landscape:hover:translate-x-1/10
+        landscape:hover:-translate-y-1/10 [grid-area:1/3/2/6] relative
       ">
-        <Image src={img_urls[index++]} alt="Photo" width={600} height={400}/>
+        <Image src={img_urls[index++]} alt="Photo" fill/>
       </div>
       <div className="
-        [grid-area:2/1/3/4] md:hidden
+        [grid-area:2/1/3/4] landscape:hidden relative
       ">
-        <Image src={img_urls[index++]} alt="Photo" width={400} height={400}/>
+        <Image src={img_urls[index++]} alt="Photo"  fill/>
       </div>
       <div className="
-        [grid-area:2/4/3/6] md:hidden
+        [grid-area:2/4/3/6] landscape:hidden relative
       ">
-        <Image src={img_urls[index++]} alt="Photo" width={600} height={400}/>
+        <Image src={img_urls[index++]} alt="Photo"  fill/>
       </div>
       <div className="
-        [grid-area:3/1/4/4] md:hover:translate-x-1/10 md:hover:translate-y-1/10
-        md:hidden
+        [grid-area:3/1/4/4] landscape:hover:translate-x-1/10 landscape:hover:translate-y-1/10
+        landscape:hidden relative
       ">
-        <Image src={img_urls[index++]} alt="Photo" width={600} height={400}/>
+        <Image src={img_urls[index++]} alt="Photo"  fill/>
       </div>
       <div className="
-        md:[grid-area:3/1/5/4] md:hover:-translate-x-1/10
-        md:hover:translate-y-1/10 [grid-area:4/1/5/4]
+        landscape:[grid-area:3/1/5/4] landscape:hover:-translate-x-1/10
+        landscape:hover:translate-y-1/10 [grid-area:4/1/5/4] relative
       ">
-        <Image src={img_urls[index++]} alt="Photo" width={400} height={400}/>
+        <Image src={img_urls[index++]} alt="Photo"  fill/>
       </div>
       <div className="
-        [grid-area:3/4/5/6] md:hover:translate-x-1/10 md:hover:translate-y-1/10
+        [grid-area:3/4/5/6] landscape:hover:translate-x-1/10 landscape:hover:translate-y-1/10 relative
       ">
-        <Image src={img_urls[index++]} alt="Photo" width={400} height={600}/>
+        <Image src={img_urls[index++]} alt="Photo"  fill/>
       </div>
     </div>
   </>

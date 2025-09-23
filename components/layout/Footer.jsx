@@ -47,7 +47,7 @@ export default function Footer() {
           )} </ul>
         </div>
       </div>
-      <p className="text-center mt-[1rem] mx-[-1rem]">
+      <p className="text-center mt-[1rem] mx-[-1rem] text-sm">
         &copy; 2025 Saranda WebOps Team &middot; MIT Licensed
       </p>
     </footer>

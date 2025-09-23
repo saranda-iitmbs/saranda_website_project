@@ -25,17 +25,17 @@ export default async function CommunitiesSection(
       }>
       <div
         className="
-          bg-neutral-dark-glass rounded-lg text-neutral-light lg:px-[5rem]
-          lg:py-[4rem] md:px-[3rem] md:py-[2rem] px-[1rem] py-[2rem] grid
-          grid-cols-1 grid-rows-[1fr_4fr] items-center gap-[1rem] lg:gap-[3rem]
-           w-full md:w-8/10 backdrop-blur-sm max-md:h-full h-8/10
-          overflow-clip max-md:items-start
+          bg-neutral-dark-glass rounded-lg text-neutral-light w-full
+          md:w-8/10 backdrop-blur-sm max-md:h-full h-8/10 grid
+          grid-rows-[1fr_4fr]
         "
       >
-        <h2 className="text-center self-center md:self-end">Our Communities</h2>
+        <h2 className="text-center self-center">
+          Our Communities
+        </h2>
         <div className="
-          grid grid-flow-row md:grid-flow-col gap-[2rem] h-full p-[2rem]
-          md:max-h-[50dvh] md:justify-around
+          flex flex-col md:flex-row w-full justify-center items-center
+          gap-[5rem]
         ">
           {cards_data.map(card => <CommunityCard
             title={card["title"]}
@@ -57,11 +57,11 @@ function CommunityCard({
   className = "",
   ...props
 }) {
-  return <Link {...props} className={className + " " +
-    "relative rounded-xl overflow-hidden flex flex-col justify-end \
-    items-center p-[1rem] md:px-[2rem] max-h-full hover:[&_p]:h-full \
-    text-neutral-light hover:[&_div.blackdiv]:bg-black/50 md:aspect-square"
-  }>
+  return <Link {...props} className={className + " " + `
+    relative flex aspect-square w-[calc(10rem+6dvw)] p-[1rem]
+    box-content rounded-xl overflow-clip items-center flex-col justify-end
+    hover:[&_p]:h-full hover:[&_div.blackdiv]:bg-black/50
+  `}>
     <Image
       src={img_src}
       alt="Community Poster"
@@ -70,12 +70,10 @@ function CommunityCard({
     />
     <div className="
       bg-black/25 absolute top-0 left-0 right-0 bottom-0 blackdiv
-      duration-200 -z-1
+      duration-200
     "></div>
-    <h3>{title}</h3>
-    <p className="
-      max-md:hidden h-0 translate-y-[1rem] duration-500 ease-out
-    ">
+    <h3 className="text-center z-1">{title}</h3>
+    <p className="h-0 overflow-clip z-1 duration-500 ease-out">
       {description}
     </p>
   </Link>

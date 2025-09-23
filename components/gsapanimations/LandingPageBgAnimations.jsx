@@ -10,6 +10,7 @@ export function LandingPageSectionsBgAnimation({
   landing_page_sections_id = "landing_page_sections_id",
   landing_page_bg_container_id = "landing_page_bg_container_id",
   lone_tree_img_id = "lone_tree_img_id",
+  mist_forest_img_id = "mist_forest_img_id",
 }) {
   useGSAP(() => {
     const sections_ref = document.getElementById(landing_page_sections_id)
@@ -35,6 +36,21 @@ export function LandingPageSectionsBgAnimation({
     })
     .to("#" + lone_tree_img_id, {
       xPercent: -40,
+    })
+
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: sections_ref,
+        scrub: 1,
+        start: `${100*(1/childCount).toFixed(4)}% 100%`,
+        end: `${100*(1-1/childCount).toFixed(4)}% 0%`,
+      }
+    })
+    .to("#" + mist_forest_img_id, {
+      xPercent: -12,
+    })
+    .to("#" + mist_forest_img_id, {
+      xPercent: -6,
     })
   })
 
