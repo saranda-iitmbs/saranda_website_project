@@ -1,16 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
+import { client } from "@/sanity/lib/client";
 
-export default function FeaturedSection() {
-  const img_urls = [
-    "https://placehold.co/600x400/png",
-    "https://placehold.co/600x400/png",
-    "https://placehold.co/600x400/png",
-    "https://placehold.co/600x400/png",
-    "https://placehold.co/600x400/png",
-    "https://placehold.co/600x400/png",
-    "https://placehold.co/600x400/png",
-  ]
+const PHOTOS_QUERY = `
+  *[_type == "featured_photos"] | order(index asc) {
+    "image_url": image.asset->url
+  }
+`
+
+export default async function FeaturedSection() {
+  const img_urls = (await client.fetch(PHOTOS_QUERY, {})).map(
+    d => d.image_url
+  )
+
   return <>
     <div id="featured_section_id" className="
       featured-section flex justify-center items-center relative
@@ -22,6 +24,8 @@ export default function FeaturedSection() {
 }
 
 function PhotoGrid({img_urls}) {
+  let index = 0
+
   return <>
     <div className="
       h-full md:h-8/10 w-full md:w-8/10 xl:w-6/10 grid grid-cols-5 grid-rows-4
@@ -33,40 +37,40 @@ function PhotoGrid({img_urls}) {
         md:[grid-area:1/1/3/3] md:hover:-translate-x-1/10
         md:hover:-translate-y-1/10 [grid-area:1/1/2/3]
       ">
-        <Image src={img_urls[0]} alt="Photo" width={600} height={400}/>
+        <Image src={img_urls[index++]} alt="Photo" width={400} height={400}/>
       </div>
       <div className="
         md:[grid-area:1/3/3/6] md:hover:translate-x-1/10
         md:hover:-translate-y-1/10 [grid-area:1/3/2/6]
       ">
-        <Image src={img_urls[1]} alt="Photo" width={600} height={400}/>
+        <Image src={img_urls[index++]} alt="Photo" width={600} height={400}/>
       </div>
       <div className="
-        md:[grid-area:3/1/5/4] md:hover:-translate-x-1/10
-        md:hover:translate-y-1/10 [grid-area:4/1/5/4]
+        [grid-area:2/1/3/4] md:hidden
       ">
-        <Image src={img_urls[2]} alt="Photo" width={600} height={400}/>
+        <Image src={img_urls[index++]} alt="Photo" width={400} height={400}/>
       </div>
       <div className="
-        [grid-area:3/4/5/6] md:hover:translate-x-1/10 md:hover:translate-y-1/10
+        [grid-area:2/4/3/6] md:hidden
       ">
-        <Image src={img_urls[3]} alt="Photo" width={600} height={400}/>
+        <Image src={img_urls[index++]} alt="Photo" width={600} height={400}/>
       </div>
       <div className="
         [grid-area:3/1/4/4] md:hover:translate-x-1/10 md:hover:translate-y-1/10
         md:hidden
       ">
-        <Image src={img_urls[4]} alt="Photo" width={600} height={400}/>
+        <Image src={img_urls[index++]} alt="Photo" width={600} height={400}/>
       </div>
       <div className="
-        [grid-area:2/1/3/4] md:hidden
+        md:[grid-area:3/1/5/4] md:hover:-translate-x-1/10
+        md:hover:translate-y-1/10 [grid-area:4/1/5/4]
       ">
-        <Image src={img_urls[5]} alt="Photo" width={600} height={400}/>
+        <Image src={img_urls[index++]} alt="Photo" width={400} height={400}/>
       </div>
       <div className="
-        [grid-area:2/4/3/6] md:hidden
+        [grid-area:3/4/5/6] md:hover:translate-x-1/10 md:hover:translate-y-1/10
       ">
-        <Image src={img_urls[6]} alt="Photo" width={600} height={400}/>
+        <Image src={img_urls[index++]} alt="Photo" width={400} height={600}/>
       </div>
     </div>
   </>
