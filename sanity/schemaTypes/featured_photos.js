@@ -13,6 +13,14 @@ export default defineType({
       validation: rule => rule.max(100),
     }),
     defineField({
+      name: "index",
+      type: "number",
+      title: "Index",
+      description: "Index starts from 1",
+      validation: rule => rule.positive().integer().max(10),
+      initialValue: 10,
+    }),
+    defineField({
       name: "image",
       type: "image",
       title: "Photo",
@@ -28,6 +36,6 @@ export default defineType({
       options: {
         source: (doc, options) => doc.description || doc._id,
       }
-    })
+    }),
   ],
 })

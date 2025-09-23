@@ -20,6 +20,11 @@ export default defineType({
       validation: rule => rule.max(180),
     }),
     defineField({
+      name: "href",
+      type: "string",
+      validation: rule => rule.max(180),
+    }),
+    defineField({
       name: "image",
       type: "image",
       title: "Poster",
