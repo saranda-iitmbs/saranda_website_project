@@ -1,7 +1,7 @@
 import { defineType, defineField } from "sanity";
 
 export default defineType({
-  name: "community_cards",
+  name: "community_card",
   type: "document",
   title: "Community Cards",
   description: "Community cards data for the Communities section in the landing page",
@@ -33,13 +33,5 @@ export default defineType({
         hotspot: true,
       }
     }),
-    defineField({
-      name: "slug",
-      type: "slug",
-      validation: rule => rule.required(),
-      options: {
-        source: (doc, options) => doc.title || doc._id,
-      }
-    })
   ],
 })

@@ -29,13 +29,5 @@ export default defineType({
         hotspot: true,
       }
     }),
-    defineField({
-      name: "slug",
-      type: "slug",
-      validation: rule => rule.required(),
-      options: {
-        source: (doc, options) => doc.description || doc._id,
-      }
-    }),
   ],
 })

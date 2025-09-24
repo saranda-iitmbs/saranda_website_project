@@ -1,9 +1,15 @@
-import community_cards from "./community_cards"
-import featured_photos from "./featured_photos"
+import community_card from "./community_card"
+import event from "./event"
+import featured_photo from "./featured_photos"
+import meetup from "./meetup"
+import team from "./team"
 
 export const schema = {
   types: [
-    featured_photos,
-    community_cards,
+    featured_photo,
+    community_card,
+    team,
+    event,
+    meetup,
   ],
 }

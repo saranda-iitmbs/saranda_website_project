@@ -3,7 +3,7 @@ import Link from "next/link"
 import { client } from "@/sanity/lib/client";
 
 const CARDS_QUERY = `
-  *[_type == "community_cards"] | order(_createdAt asc) {
+  *[_type == "community_card"] | order(_createdAt asc) {
     title,
     description,
     href,
