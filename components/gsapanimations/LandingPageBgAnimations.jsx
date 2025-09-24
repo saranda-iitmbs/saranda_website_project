@@ -52,6 +52,18 @@ export function LandingPageSectionsBgAnimation({
     .to("#" + mist_forest_img_id, {
       xPercent: -6,
     })
+
+    ScrollTrigger.create({
+      trigger: "#" + landing_page_sections_id,
+      start: "top-=200px bottom-=200px",
+      end: "66.67%-=200px top-=200px",
+      snap: {
+        snapTo: 1/3,
+        duration: {min:0.1, max:1},
+        delay: 0,
+        directional: false,
+      },
+    })
   })
 
   return null
