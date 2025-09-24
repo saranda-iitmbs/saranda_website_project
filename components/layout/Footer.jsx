@@ -27,7 +27,10 @@ export default function Footer() {
               {e["text"]}
             </Link></li>
           )} </ul>
-          <SocialLinks icons_size={icons_size}/>
+          <SocialLinks
+            icons_size={icons_size}
+            className="flex-wrap mb-[1.5rem]"
+          />
           <TheLogos logo_size={logo_size}/>
         </div>
         <div>

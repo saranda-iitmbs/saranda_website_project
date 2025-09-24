@@ -9,9 +9,10 @@ import { FaYoutube } from "react-icons/fa";
 export default function SocialLinks({
   icons_size = 26,
   className = "",
+  ...props
 }) {
-  return <div className={className + " " +
-    "flex flex-row flex-wrap gap-[1ch] mb-[1.5rem]"
+  return <div {...props} className={className + " " +
+    "flex gap-[1ch]"
   }>
     <Link href={social_links["instagram"]} target="blank">
       <FaInstagramSquare size={icons_size}/>

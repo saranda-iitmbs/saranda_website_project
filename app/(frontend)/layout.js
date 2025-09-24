@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -33,8 +34,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${roboto.variable} ${redwood.variable}`}>
       <body>
+        <Header/>
         {children}
-        <Footer />
+        <Footer/>
       </body>
     </html>
   );
