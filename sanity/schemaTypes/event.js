@@ -47,7 +47,7 @@ export default defineType({
     defineField({
       name: "enddate",
       title: "End Date",
-      description: "This date is used to determine where the event is past event or not. This date will not be shown in the events post.",
+      description: "The date since when it'd stop showing up in the page. This date is used to determine where the event is past event or not. This date will not be shown in the events post. e.g. if the date the 1947-08-14 then it will not show up on the date 1947-08-14 or later",
       type: "date",
       validation: rule => rule.required()
     }),
