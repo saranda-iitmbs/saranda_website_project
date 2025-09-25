@@ -4,8 +4,8 @@ import CTAButton from "./CTAButton"
 export default function({event}) {
   return <div className="
     w-9/10 max-w-[120ch] mx-auto bg-neutral-dark-glass rounded-xl p-[1rem]
-    text-neutral-light mb-[2rem] grid gap-[1rem] md:grid-cols-[18rem_1fr]
-    grid-cols-1
+    text-neutral-light mb-[2rem] pb-[4rem] grid gap-[1rem]
+    md:grid-cols-[18rem_1fr] grid-cols-1
   ">
     <div className="relative h-[24rem]">
       <Image
