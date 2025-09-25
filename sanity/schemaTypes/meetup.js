@@ -12,7 +12,7 @@ export default defineType({
       validation: rule => rule.required().min(1).max(80),
     }),
     defineField({
-      name: "descripton",
+      name: "description",
       title: "Description",
       type: "text",
       validation: rule => rule.max(2000),
