@@ -3,15 +3,13 @@ import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 
 const PHOTOS_QUERY = `
-  *[_type == "featured_photos"] | order(index asc) {
-    "image_url": image.asset->url
-  }
+  *[_type == "photoset" && setname == "featured_photos"][0]{
+    "image_urls": images[].asset->url
+  }["image_urls"]
 `
 
 export default async function FeaturedSection() {
-  const img_urls = (await client.fetch(PHOTOS_QUERY, {})).map(
-    d => d.image_url
-  )
+  const img_urls = await client.fetch(PHOTOS_QUERY, {}) || []
 
   return <>
     <div id="featured_section_id" className="
