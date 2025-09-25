@@ -25,7 +25,6 @@ const PAST_EVENTS_QUERY = `
 
 export default async function EventsPage({searchParams}) {
   const isPast = ((await searchParams).past == "true") || false
-  console.log(isPast)
 
   const events = await client.fetch(
     isPast ? PAST_EVENTS_QUERY : CURRENT_EVENTS_QUERY, {}

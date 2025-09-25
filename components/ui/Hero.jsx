@@ -9,7 +9,7 @@ export default function Hero() {
   const the_saranda_text_id = "the_sranda_text_id"
 
   return <>
-    <div className="h-dvh overflow-y-hidden" id={hero_section_id}>
+    <div className="h-[100vh] overflow-y-hidden relative" id={hero_section_id}>
       <Image
         id={lush_forest_back_id}
         src={lush_forest_back_img}

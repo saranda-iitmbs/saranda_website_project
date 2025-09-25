@@ -15,12 +15,12 @@ export default function LandingPageSections({
   return <>
     <main
       className={className + " " +
-        "min-h-dvh relative overflow-hidden *:h-dvh"
+        "min-h-[100vh] relative overflow-hidden *:h-[100vh]"
       }
       id={landing_page_sections_id}
     >
       <div
-        className="h-dvh w-screen absolute -z-1"
+        className="h-[100vh] w-screen absolute -z-1"
         id={landing_page_bg_container_id}
       >
         <Image
@@ -28,12 +28,12 @@ export default function LandingPageSections({
           src={mist_forest_img}
           alt="Forest Background"
           fill
-          className="object-cover h-dvh w-screen scale-125"
+          className="object-cover h-[100vh] w-screen scale-125"
         ></Image>
         <Image
           src={lone_tree_img}
           alt="Lone Tree"
-          className="object-fill h-dvh max-w-none w-screen translate-x-[40%]"
+          className="object-fill h-[100vh] max-w-none w-screen translate-x-[40%]"
           id={lone_tree_img_id}
         ></Image>
       </div>

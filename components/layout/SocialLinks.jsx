@@ -12,7 +12,7 @@ export default function SocialLinks({
   ...props
 }) {
   return <div {...props} className={className + " " +
-    "flex gap-[1ch]"
+    "flex md:gap-[1ch] gap-[2ch] *:max-md:scale-120"
   }>
     <Link href={social_links["instagram"]} target="blank">
       <FaInstagramSquare size={icons_size}/>
