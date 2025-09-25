@@ -15,7 +15,7 @@ export default defineType({
       name: "descripton",
       title: "Description",
       type: "text",
-      validation: rule => rule.max(200),
+      validation: rule => rule.max(2000),
     }),
     defineField({
       name: "links",
