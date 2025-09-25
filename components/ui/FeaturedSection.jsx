@@ -1,6 +1,6 @@
-import Link from "next/link";
 import Image from "next/image";
 import { client } from "@/sanity/lib/client";
+import CTAButton from "./CTAButton";
 
 const PHOTOS_QUERY = `
   *[_type == "photoset" && setname == "featured_photos"][0]{
@@ -100,13 +100,4 @@ function CTAContainer() {
       </div>
     </div>
   </>
-}
-
-function CTAButton({href="#", children}) {
-  return <Link href={href} className="
-    bg-neutral-light text-primary rounded-lg px-[0.5rem]
-    hover:bg-secondary active:bg-secondary
-  ">
-    <button>{children}</button>
-  </Link>
 }
