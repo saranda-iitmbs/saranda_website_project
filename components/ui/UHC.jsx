@@ -25,7 +25,7 @@ export default async function UHC() {
       h-4/5 md:h-3/5 w-4/5 max-w-[120ch] flex text-neutral-light flex-col
       md:flex-row
     ">
-      {team.members.map(d => <Member member={d} key={d._key}/>)}
+      {team?.members?.map(d => <Member member={d} key={d._key}/>)}
     </div>
   </main>
 }

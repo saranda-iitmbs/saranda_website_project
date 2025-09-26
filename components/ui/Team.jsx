@@ -14,7 +14,7 @@ export default function Team({team}) {
       max-lg:border-t-2 lg:border-l-1 border-neutral-light grid gap-[1rem]
       max-lg:py-[1rem] grid-cols-[repeat(auto-fill,minmax(10rem,1fr))]
     ">
-      {team.members.map(mem => <Member member={mem} key={mem._key}/>)}
+      {team.members?.map(mem => <Member member={mem} key={mem._key}/>)}
     </div>
   </div>
 }
