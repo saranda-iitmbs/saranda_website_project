@@ -39,14 +39,5 @@ export default defineType({
         ]
       }],
     }),
-    defineField({
-      name: "slug",
-      type: "slug",
-      description: "note: Use only the generate button to add the slug and don't type it manually.",
-      options: {
-        source: "setname",
-      },
-      validation: rule => rule.required(),
-    }),
   ],
 })
