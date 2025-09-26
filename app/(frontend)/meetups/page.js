@@ -15,7 +15,7 @@ const MEETUP_QUERY = `
 export default async function Meetup() {
   const meetups = await client.fetch(MEETUP_QUERY, {}) || []
 
-  return <main className="pt-[5rem] pb-[5rem] relative">
+  return <main className="pt-[5rem] pb-[5rem] relative min-h-[100vh]">
     <Image
       src={mist_forest_img}
       alt=""

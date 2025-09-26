@@ -21,7 +21,7 @@ const TEAM_QUERY = `
 export default async function KnowUs() {
   const teams = await client.fetch(TEAM_QUERY, {}) || []
 
-  return <main className="relative pb-[2rem]">
+  return <main className="relative pb-[2rem] min-h-[100vh]">
     <Image
       src={mist_forest_img}
       alt=""
