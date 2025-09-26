@@ -1,14 +1,36 @@
 import Link from "next/link";
 import footer_links from "./footer_links.json";
 import SocialLinks from "./SocialLinks";
-
 import Image from "next/image";
 import saranda_logo from "@/public/images/saranda_logo.png";
 import iitm_logo from "@/public/images/iitm_logo.png";
+import { client } from "@/sanity/lib/client";
 
-export default function Footer() {
+const EXTRA_LINKS_QUERY = `
+*[_type == "extra_footer_links" && link_group_name == $groupname]{
+  "links": links[]{text,url}
+}.links[]`
+
+export default async function Footer() {
   const icons_size = 26
   const logo_size = 64
+
+  const extra_contact_links = await client.fetch(EXTRA_LINKS_QUERY, {
+    "groupname": "contacts",
+  }) || []
+  const extra_quick_links = await client.fetch(EXTRA_LINKS_QUERY, {
+    "groupname": "quick_links",
+  }) || []
+  const extra_useful_links = await client.fetch(EXTRA_LINKS_QUERY, {
+    "groupname": "other_useful_links",
+  }) || []
+
+  const all_contact_links =
+    footer_links["Contacts"].concat(extra_contact_links)
+  const all_quick_links =
+    footer_links["Quick Links"].concat(extra_quick_links)
+  const all_useful_links =
+    footer_links["Other Useful Links"].concat(extra_useful_links)
 
   return <>
     <footer
@@ -22,8 +44,8 @@ export default function Footer() {
       ">
         <div>
           <h3>Contacts</h3>
-          <ul> {footer_links["Contacts"].map(
-            e => <li key={e["url"]}><Link href={e["url"]}>
+          <ul> {all_contact_links.map(
+            (e,index) => <li key={index}><Link href={e["url"]} target="blank">
               {e["text"]}
             </Link></li>
           )} </ul>
@@ -35,16 +57,16 @@ export default function Footer() {
         </div>
         <div>
           <h3>Quick Links</h3>
-          <ul> {footer_links["Quick Links"].map(
-            e => <li key={e["url"]}><Link href={e["url"]}>
+          <ul> {all_quick_links.map(
+            (e,index) => <li key={index}><Link href={e["url"]}>
               {e["text"]}
             </Link></li>
           )} </ul>
         </div>
         <div>
           <h3>Other Useful Links</h3>
-          <ul> {footer_links["Other Useful Links"].map(
-            e => <li key={e["url"]}><Link href={e["url"]}>
+          <ul> {all_useful_links.map(
+            (e,index) => <li key={index}><Link href={e["url"]} target="blank">
               {e["text"]}
             </Link></li>
           )} </ul>

@@ -1,5 +1,6 @@
 import Image from "next/image"
 import CTAButton from "./CTAButton"
+import { PortableText } from "next-sanity"
 
 export default function({event}) {
   return <div className="
@@ -7,7 +8,10 @@ export default function({event}) {
     text-neutral-light mb-[2rem] pb-[4rem] grid gap-[1rem]
     md:grid-cols-[18rem_1fr] grid-cols-1
   ">
-    <div className="relative h-[24rem]">
+    <div className="
+      relative h-[24rem] hover:mx-[-3rem] duration-200 hover:shadow-lg
+      shadow-black
+    ">
       <Image
         src={event.poster_url || "https://placehold.co/400/gray/gray/png"}
         alt=""
@@ -17,9 +21,13 @@ export default function({event}) {
     </div>
     <div>
       <h3 className="mb-[0.5rem]">{event.eventname}</h3>
-      <p className="mb-[1rem]">{event.description}</p>
+      <div className="mb-[1rem] *:min-h-[1rem]">
+        <PortableText value={event.description}/>
+      </div>
       {event.links && event.links.map(
-        l => <CTAButton href={l.url} key={l._key}>{l.text}</CTAButton>
+        l => <CTAButton href={l.url} key={l._key} target="blank">
+          {l.text}
+        </CTAButton>
       )}
     </div>
   </div>

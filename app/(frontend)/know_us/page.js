@@ -5,7 +5,7 @@ import { client } from "@/sanity/lib/client";
 import Team from "@/components/ui/Team";
 
 const TEAM_QUERY = `
-*[_type == "team" && teamname != "uhc"]{
+*[_type == "team" && teamname != "uhc"] | order(index asc) {
   _id,
   "name": longname,
   "members": members[]{

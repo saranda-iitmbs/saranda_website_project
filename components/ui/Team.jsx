@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export default function Team({team}) {
   return <div className="
-    w-9/10 max-w-[140ch] mx-auto bg-neutral-dark-glass rounded-xl 
+    w-9/10 max-w-[120ch] mx-auto bg-neutral-dark-glass rounded-xl 
     p-[1rem] *:px-[1rem] text-neutral-light mb-[2rem] overflow-clip
     grid lg:grid-cols-[40ch_1fr] max-lg:grid-flow-row
   ">

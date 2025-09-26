@@ -24,6 +24,13 @@ export default defineType({
       },
     }),
     defineField({
+      name: "index",
+      type: "number",
+      description: "This number is used to determine order of the teams to show in the page(this has no effect in UHC). The lower the number the heigher in the page it will show up.",
+      initialValue: 10,
+      validation: rule => rule.required().integer()
+    }),
+    defineField({
       name: "members",
       title: "Members",
       type: "array",

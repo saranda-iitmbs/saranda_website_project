@@ -29,7 +29,7 @@ function PhotoGrid({img_urls}) {
   return <>
     <div className="
       h-full md:h-8/10 w-full md:w-8/10 xl:w-6/10 grid grid-cols-5 grid-rows-4
-      gap-1 *:border-4 *:border-neutral-light
+      gap-1 *:border-4 *:border-neutral-light *:hover:z-2
       [&_img]:object-cover *:z-1 md:*:hover:[scale:120%] *:duration-200
       **:rounded-xl mx-2
     ">

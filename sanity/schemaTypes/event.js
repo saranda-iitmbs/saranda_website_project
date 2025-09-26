@@ -14,8 +14,12 @@ export default defineType({
     defineField({
       name: "description",
       title: "Description",
-      type: "text",
-      validation: rule => rule.max(2000),
+      type: "array",
+      of: [{
+        type: "block",
+        options: {spellCheck: true},
+        styles: [],
+      }],
     }),
     defineField({
       name: "links",

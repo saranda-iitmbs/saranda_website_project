@@ -34,8 +34,8 @@ export default async function CommunitiesSection(
           Our Communities
         </h2>
         <div className="
-          flex flex-col md:flex-row w-full justify-center items-center
-          gap-[5rem]
+          md:flex md:flex-row w-full justify-center items-center md:gap-[5rem]
+          flex-wrap max-md:grid max-md:grid-flow-row gap-[2rem]
         ">
           {cards_data.map(card => <CommunityCard
             title={card["title"]}
