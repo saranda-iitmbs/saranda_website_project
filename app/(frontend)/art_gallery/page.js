@@ -9,7 +9,11 @@ const GALLERY_QUERY = `
 }["image_urls"]`
 
 export default async function ArtGallery() {
-  const pictures = await client.fetch(GALLERY_QUERY, {}) || []
+  const pictures = await client.fetch(
+    GALLERY_QUERY,
+    {},
+    { next: {revalidate: 60} }
+  ) || []
 
   return <main className="pt-[5rem] pb-[5rem] relative min-h-[100vh]">
     <Image

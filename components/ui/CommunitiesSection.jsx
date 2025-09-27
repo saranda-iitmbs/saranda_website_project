@@ -15,7 +15,11 @@ export default async function CommunitiesSection(
   className = ""
 ) {
   const communities_section_id = "communities_section_id"
-  const cards_data = await client.fetch(CARDS_QUERY, {}) || []
+  const cards_data = await client.fetch(
+    CARDS_QUERY,
+    {},
+    { next: { revalidate: 60} }
+  ) || []
 
   return <>
     <div

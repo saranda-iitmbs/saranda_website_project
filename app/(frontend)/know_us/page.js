@@ -19,7 +19,11 @@ const TEAM_QUERY = `
 
 
 export default async function KnowUs() {
-  const teams = await client.fetch(TEAM_QUERY, {}) || []
+  const teams = await client.fetch(
+    TEAM_QUERY,
+    {},
+    { next: { revalidate:60 } }
+  ) || []
 
   return <main className="relative pb-[2rem] min-h-[100vh]">
     <Image

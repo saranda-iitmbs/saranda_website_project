@@ -13,7 +13,11 @@ const MEETUP_QUERY = `
 }`
 
 export default async function Meetup() {
-  const meetups = await client.fetch(MEETUP_QUERY, {}) || []
+  const meetups = await client.fetch(
+    MEETUP_QUERY,
+    {},
+    { next: { revalidate: 60 } }
+  ) || []
 
   return <main className="pt-[5rem] pb-[5rem] relative min-h-[100vh]">
     <Image

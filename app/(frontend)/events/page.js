@@ -27,7 +27,9 @@ export default async function EventsPage({searchParams}) {
   const isPast = ((await searchParams).past == "true") || false
 
   const events = await client.fetch(
-    isPast ? PAST_EVENTS_QUERY : CURRENT_EVENTS_QUERY, {}
+    isPast ? PAST_EVENTS_QUERY : CURRENT_EVENTS_QUERY,
+    {},
+    { next: { revalidate: 60 } }
   ) || []
 
   return <main className="pt-[5rem] pb-[5rem] relative min-h-[100vh]">

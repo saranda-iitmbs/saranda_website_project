@@ -9,7 +9,11 @@ const PHOTOS_QUERY = `
 `
 
 export default async function FeaturedSection() {
-  const img_urls = await client.fetch(PHOTOS_QUERY, {}) || []
+  const img_urls = await client.fetch(
+    PHOTOS_QUERY,
+    {},
+    { next: { revalidate: 60 } }
+  ) || []
 
   return <>
     <div id="featured_section_id" className="
