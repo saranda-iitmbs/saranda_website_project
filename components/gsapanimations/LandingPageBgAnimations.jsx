@@ -31,12 +31,11 @@ export function LandingPageSectionsBgAnimation({
         end: `${100*(1-1/childCount).toFixed(4)}% 0%`,
       }
     })
-    .to("#" + lone_tree_img_id, {
-      xPercent: -80,
-    })
-    .to("#" + lone_tree_img_id, {
-      xPercent: -40,
-    })
+    .fromTo("#" + lone_tree_img_id,
+      { x: "40vw", },
+      { x: "-40vw" }
+    )
+    .to("#" + lone_tree_img_id, { x: "0vw" })
 
     gsap.timeline({
       scrollTrigger: {
@@ -47,22 +46,10 @@ export function LandingPageSectionsBgAnimation({
       }
     })
     .to("#" + mist_forest_img_id, {
-      xPercent: -12,
+      x: "-6vw",
     })
     .to("#" + mist_forest_img_id, {
-      xPercent: -6,
-    })
-
-    ScrollTrigger.create({
-      trigger: "#" + landing_page_sections_id,
-      start: "top-=200px bottom-=200px",
-      end: "66.67%-=200px top-=200px",
-      snap: {
-        snapTo: 1/3,
-        duration: {min:0.1, max:1},
-        delay: 0,
-        directional: false,
-      },
+      x: "6vw",
     })
   })
 

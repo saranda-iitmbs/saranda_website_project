@@ -2,31 +2,48 @@
 
 import { useState } from "react";
 import PhotoOverlay from "./PhotoOverlay";
+import { twJoin } from "tailwind-merge";
+import Image from "next/image";
 
-export default function ArtGalleryPhotos({ pictures }) {
+
+export default function ArtGalleryPhotos({
+  pictures,
+  className = "",
+  children,
+  ...props
+}) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return <>
-    <div className="
-      w-full md:w-9/10 max-w-[120ch] mx-auto p-[1rem] text-neutral-light
-      mb-[2rem] pb-[4rem] lg:columns-4 md:columns-3 columns-2 gap-[0.5rem]
-    ">
-      {pictures.map((p, index) => (
-        <img src={p}
-          key={p}
-          alt="photo"
+    {(pictures?.img?.length == 0) && (
+      <p className="text-center my-[2rem] font-medium">
+        No Art for now :(
+      </p>
+    )}
+
+    <div
+      className={twJoin(
+        `w-full md:w-9/10 max-w-[120ch] mx-auto p-[1rem] text-neutral-light
+        mb-[2rem] pb-[4rem] lg:columns-4 md:columns-3 columns-2 gap-0`,
+        className
+      )}
+      {...props}
+    >
+      {children}
+      {pictures.img.map((img, index) => (
+        <Image
+          key={index}
+          {...img}
+          alt=""
+          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 30vw, 20vw"
           onClick={e => setSelectedIndex(index)}
-          className="
-            mb-[0.5rem] border-2 border-neutral-dark cursor-pointer
-            hover:scale-110 hover:z-2 duration-200 hover:shadow-lg
-            shadow-black
-          "
+          className="album-photo w-full"
         />
       ))}
     </div>
 
     <PhotoOverlay
-      pictures={pictures}
+      pictures={pictures.img}
       selectedIndex={selectedIndex}
       setSelectedIndex={setSelectedIndex}
     />

@@ -2,10 +2,12 @@ import Image from "next/image";
 import mist_forest_img from "@/public/images/mist_forest2.png";
 import lone_tree_img from "@/public/images/lone_tree.png";
 import { LandingPageSectionsBgAnimation } from "@/components/gsapanimations/LandingPageBgAnimations";
+import { twJoin } from "tailwind-merge";
 
 export default function LandingPageSections({
   className = "",
-  children
+  children,
+  ...props
 }) {
   const landing_page_sections_id = "landing_page_sections_id"
   const landing_page_bg_container_id = "landing_page_bg_container_id"
@@ -14,10 +16,12 @@ export default function LandingPageSections({
 
   return <>
     <main
-      className={className + " " +
-        "min-h-[100vh] relative overflow-hidden *:h-[100vh]"
-      }
+      className={twJoin(
+        "min-h-[100vh] relative overflow-hidden *:h-[100vh]",
+        className
+      )}
       id={landing_page_sections_id}
+      {...props}
     >
       <div
         className="h-[100vh] w-screen absolute -z-1"
@@ -28,12 +32,17 @@ export default function LandingPageSections({
           src={mist_forest_img}
           alt="Forest Background"
           fill
+          sizes="100vw"
+          placeholder="blur"
           className="object-cover h-[100vh] w-screen scale-125"
         ></Image>
         <Image
           src={lone_tree_img}
           alt="Lone Tree"
-          className="object-fill h-[100vh] max-w-none w-screen translate-x-[40%]"
+          sizes="100vw"
+          className="
+            object-fill h-[100vh] max-w-none w-screen
+          "
           id={lone_tree_img_id}
         ></Image>
       </div>

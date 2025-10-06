@@ -1,25 +1,22 @@
-import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import Link from "next/link";
+import { twJoin } from "tailwind-merge";
+import { getUHCTeam } from "@/lib/cmsdata";
 
-const UHC_QUERY = `
-*[_type == "team" && teamname == "uhc"][0]{
-  "name": longname,
-  "members": members[]{
-    _key,
-    fullname,
-    email,
-    position,
-    "image_url": image.asset->url,
-  }
-}`
 
-export default async function UHC() {
-  const team = await client.fetch(UHC_QUERY, {}) || []
+export default async function UHC({
+  className = "",
+  ...props
+}) {
+  const team = await getUHCTeam();
 
-  return <main className="
-    flex flex-col justify-center items-center h-[150dvh] md:h-dvh
-  ">
+  return <main
+    className={twJoin(
+      `flex flex-col justify-center items-center h-[150dvh] md:h-dvh`,
+      className
+    )}
+    {...props}
+  >
     <h2 className="text-primary mb-[2rem]">{team.name}</h2>
     <div className="
       h-4/5 md:h-3/5 w-4/5 max-w-[120ch] flex text-neutral-light flex-col
@@ -30,16 +27,22 @@ export default async function UHC() {
   </main>
 }
 
-function Member({ member, ...props }) {
-  return <div className="
-    relative flex-1 hover:flex-2 duration-200 -skew-x-6 *:skew-x-6
-    overflow-clip flex flex-col justify-end items-center
-    hover:[&_.theemail]:h-[2rem]
-  ">
+
+async function Member({ member, className="", ...props }) {
+  return <div
+    className={twJoin(
+      `relative flex-1 hover:flex-2 duration-200 -skew-x-6 *:skew-x-6
+      max-md:skew-0 max-md:*:skew-0 max-md:odd:translate-x-5
+      max-md:even:-translate-x-5 overflow-clip flex flex-col justify-end
+      items-center hover:[&_.theemail]:h-[2rem]`
+    )}
+    {...props}
+  >
     <Image
-      src={member.image_url || "https:/placehold.co/400x400/gray/gray/png"}
+      {...member.img}
       alt="member photo"
       fill
+      sizes="(max-width: 768px) 100vw, 34vw"
       className="object-cover -z-1 scale-120"
     />
     <div className="

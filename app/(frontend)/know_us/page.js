@@ -1,38 +1,22 @@
 import UHC from "@/components/ui/UHC";
 import mist_forest_img from "@/public/images/mist_forest1.png"
 import Image from "next/image";
-import { client } from "@/sanity/lib/client";
 import Team from "@/components/ui/Team";
-
-const TEAM_QUERY = `
-*[_type == "team" && teamname != "uhc"] | order(index asc) {
-  _id,
-  "name": longname,
-  "members": members[]{
-    _key,
-    fullname,
-    email,
-    position,
-    "image_url": image.asset->url,
-  }
-}`
+import { getNonUHCTeams } from "@/lib/cmsdata";
 
 
 export default async function KnowUs() {
-  const teams = await client.fetch(
-    TEAM_QUERY,
-    {},
-    { next: { revalidate:60 } }
-  ) || []
+  const nonUHCTeams = await getNonUHCTeams();
 
   return <main className="relative pb-[2rem] min-h-[100vh]">
     <Image
       src={mist_forest_img}
       alt=""
       fill
+      sizes="100vw"
       className="object-cover -z-1"
     />
     <UHC/>
-    {teams.map(team => <Team team={team} key={team._id}/>)}
+    {nonUHCTeams.map(team => <Team team={team} key={team._id}/>)}
   </main>
 }

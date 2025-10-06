@@ -5,15 +5,21 @@ import { FaInstagramSquare } from "react-icons/fa";
 import { FaWhatsappSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
+import { twJoin } from "tailwind-merge";
 
 export default function SocialLinks({
   icons_size = 26,
   className = "",
   ...props
 }) {
-  return <div {...props} className={className + " " +
-    "flex md:gap-[1ch] gap-[2ch] *:max-md:scale-120"
-  }>
+  return <div
+    {...props}
+    className={twJoin(
+      `flex md:gap-[1ch] gap-[2ch] *:max-md:scale-120
+      *:active:text-secondary`,
+      className
+    )}
+  >
     <Link href={social_links["instagram"]} target="blank">
       <FaInstagramSquare size={icons_size}/>
     </Link>

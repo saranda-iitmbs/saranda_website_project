@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
-import { client } from "@/sanity/lib/client";
+import { twJoin } from "tailwind-merge";
+import { getCommunityCards } from "@/lib/cmsdata";
 
 const CARDS_QUERY = `
   *[_type == "community_card"] | order(_createdAt asc) {
@@ -11,28 +12,32 @@ const CARDS_QUERY = `
   }
 `
 
-export default async function CommunitiesSection(
-  className = ""
-) {
+
+export default async function CommunitiesSection({
+  className = "",
+  innerClassName = "",
+  innerProps = {},
+  ...props
+}) {
   const communities_section_id = "communities_section_id"
-  const cards_data = await client.fetch(
-    CARDS_QUERY,
-    {},
-    { next: { revalidate: 60} }
-  ) || []
+  const cards_data = await getCommunityCards({imgDimensions: false});
 
   return <>
     <div
       id={communities_section_id}
-      className={className + " " +
-        "flex justify-center items-center p-1"
-      }>
+      className={twJoin(
+        "flex justify-center items-center p-1",
+        className
+      )}
+      {...props}
+    >
       <div
-        className="
-          bg-neutral-dark-glass rounded-lg text-neutral-light w-full
-          md:w-8/10 backdrop-blur-sm max-md:h-full h-8/10 grid
-          grid-rows-[1fr_4fr]
-        "
+        className={twJoin(
+          `green-glass-container w-full md:w-8/10 max-md:h-full h-8/10 grid
+          grid-rows-[1fr_4fr]`,
+          innerClassName
+        )}
+        {...innerProps}
       >
         <h2 className="text-center self-center">
           Our Communities
@@ -46,6 +51,7 @@ export default async function CommunitiesSection(
             description={card["description"]}
             img_src={card["img_src"]}
             href={card["href"]}
+            card={card}
             key={cards_data.indexOf(card)}
           />)}
         </div>
@@ -54,31 +60,37 @@ export default async function CommunitiesSection(
   </>
 }
 
+
 function CommunityCard({
-  img_src = "https://placehold.co/400/111/222/png",
-  title = "",
-  description = "",
+  img_src = "https://placehold.co/10/gray/gray/png",
+  card,
   className = "",
   ...props
 }) {
-  return <Link {...props} className={className + " " + `
-    relative flex aspect-square w-[calc(10rem+6dvw)] p-[1rem]
-    box-content rounded-xl overflow-clip items-center flex-col justify-end
-    hover:[&_p]:h-full hover:[&_div.blackdiv]:bg-black/50
-  `}>
+  return <Link
+    className={twJoin(
+      `relative flex aspect-square w-[calc(10rem+6dvw)] p-[1rem] box-content
+      rounded-xl overflow-clip items-center flex-col justify-end
+      hover:[&_p]:h-full hover:[&_div.blackdiv]:bg-black/50`,
+      className
+    )}
+    {...props}
+  >
     <Image
-      src={img_src}
+      // src={img_src}
+      {...card.img}
       alt="Community Poster"
       fill
+      sizes="(max-width: 768px) 100vw, 40vw"
       className="object-cover -z-1"
     />
     <div className="
       bg-black/25 absolute top-0 left-0 right-0 bottom-0 blackdiv
       duration-200
     "></div>
-    <h3 className="text-center z-1">{title}</h3>
+    <h3 className="text-center z-1">{card.title}</h3>
     <p className="h-0 overflow-clip z-1 duration-500 ease-out">
-      {description}
+      {card.description}
     </p>
   </Link>
 }

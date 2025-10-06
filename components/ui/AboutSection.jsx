@@ -1,9 +1,13 @@
 import Image from "next/image";
 import saranda_logo_mark_img from "@/public/images/saranda_logo_mark.svg"
 import AboutSEctionAnimation from "../gsapanimations/AboutSectionAnimation";
+import { twJoin } from "tailwind-merge";
 
 export default function AboutSection({
   className = "",
+  innerClassName = "",
+  innerProps = {},
+  ...props
 }) {
   const about_section_id = "about_section_id"
   const about_section_inner_id = "about_section_inner_id"
@@ -12,19 +16,23 @@ export default function AboutSection({
   return <>
     <div
       id={about_section_id}
-      className={className + " " +
-        "grid justify-center items-center p-1"
-      }>
+      className={twJoin(
+        "grid justify-center items-center p-1",
+        className
+      )}
+      {...props}
+    >
       <div
         id={about_section_inner_id}
-        className="
-          bg-neutral-dark-glass rounded-lg text-neutral-light lg:px-[5rem]
-          lg:py-[4rem] md:px-[3rem] md:py-[2rem] px-[1rem] py-[2rem] grid
-          grid-cols-1 md:grid-cols-2 gap-[1rem] lg:gap-[3rem] max-w-[120ch]
-          relative backdrop-blur-sm max-md:h-full overflow-clip
-          max-md:items-start
-        "
+        className={twJoin(
+          `green-glass-container lg:px-[5rem] lg:py-[4rem] md:px-[3rem]
+          md:py-[2rem] px-[1rem] py-[2rem] grid grid-cols-1
+          md:grid-cols-2 gap-[1rem] lg:gap-[3rem] max-w-[120ch] relative
+          max-md:h-full overflow-clip max-md:items-start`,
+          innerClassName
+        )}
         style={{"direction": "rtl"}}
+        {...innerProps}
       >
         <div
           id={about_content_container_id}

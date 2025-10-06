@@ -2,38 +2,42 @@
 
 import { useState } from "react";
 import PhotoOverlay from "./PhotoOverlay";
+import { twJoin } from "tailwind-merge";
+import Image from "next/image";
 
-export default function({meetup}) {
+
+export default function({meetup, className="", children, ...props}) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return <>
-    <div className="
-      w-9/10 max-w-[120ch] mx-auto bg-neutral-dark-glass rounded-xl p-[1rem]
-      text-neutral-light mb-[2rem] pb-[4rem]
-    ">
+    <div
+      className={twJoin(
+        `w-9/10 max-w-[120ch] mx-auto p-[1rem] green-glass-container mb-[2rem]
+        pb-[4rem]`, 
+        className
+      )}
+      {...props}
+    >
       <h3 className="mb-[-0.2rem]">{meetup.meetupname}</h3>
       <p className="font-bold mb-[0.8rem]">Date: {meetup.date}</p>
       <p className="mb-[1.5rem] leading-5">{meetup.description}</p>
+      {children}
       <div className="lg:columns-4 md:columns-3 columns-2 gap-[0.5rem]">
-        {
-          meetup.image_urls &&
-          meetup.image_urls.map((u,index) => <img
+        {meetup.img && meetup.img.map((img,index) => (
+          <Image
             onClick={e => setSelectedIndex(index)}
-            src={u}
+            {...img}
             alt=""
-            key={u}
-            className="
-              my-[0.5rem] border-2 border-neutral-light hover:scale-110
-              hover:z-2 duration-200 hover:shadow-lg shadow-black
-              cursor-pointer
-            "
+            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 30vw, 20vw"
+            key={index}
+            className="album-photo mb-[0.5rem] w-full"
           />)
-        }
+        )}
       </div>
     </div>
 
     <PhotoOverlay
-      pictures={meetup.image_urls}
+      pictures={meetup.img}
       selectedIndex={selectedIndex}
       setSelectedIndex={setSelectedIndex}
     />

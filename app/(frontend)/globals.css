@@ -6,9 +6,17 @@
 }
 @theme {
   --color-primary: oklch(0.4002 0.06 151.15);
+  --color-primary-lighter: oklch(0.9688 0.06 151.15);
+  --color-primary-darker: oklch(0.1617 0.06 151.15);
   --color-secondary: oklch(0.9069 0.1869 102.87);
+  --color-secondary-ligher: oklch(0.999 0.1869 102.87);
+  --color-secondary-darker: oklch(0.8 0.1869 102.87);
   --color-neutral-light: oklch(0.985 0 0);
+  --color-neutral-light-lighter: oklch(1 0 0);
+  --color-neutral-light-darker: oklch(0.8205 0 0);
   --color-neutral-dark: oklch(0.2631 0.026 140.39);
+  --color-neutral-dark-lighter: oklch(0.5148 0.026 140.39);
+  --color-neutral-dark-darker: oklch(0.1142 0.026 140.39);
   --color-neutral-dark-glass: oklch(0.2631 0.026 140.39 / 0.8);
 }
 
@@ -38,5 +46,18 @@
   }
   footer a {
     @apply text-sm 2xl:text-base hover:underline active:underline
+  }
+
+  .green-glass-container {
+    @apply bg-neutral-dark-glass rounded-xl text-neutral-light
+      backdrop-blur-sm border-y-2 border-t-neutral-dark-lighter
+      border-b-neutral-dark-darker
+  }
+
+  .album-photo {
+    @apply border-2 border-neutral-light/50 hover:scale-110 hover:z-2
+      duration-200 hover:shadow-lg shadow-black cursor-pointer
+      rounded-lg border-t-neutral-light-lighter/80
+      border-b-neutral-light-darker
   }
 }
