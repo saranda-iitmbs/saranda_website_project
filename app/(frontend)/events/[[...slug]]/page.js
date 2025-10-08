@@ -3,10 +3,15 @@ import mist_forest_img from "@/public/images/mist_forest2.png";
 import EventPost from "@/components/ui/EventPost";
 import CTAButton from "@/components/ui/CTAButton";
 import { getEventPosts } from "@/lib/cmsdata";
+import { redirect } from "next/navigation";
 
 
-export default async function EventsPage({searchParams}) {
-  const isPast = ((await searchParams).past == "true") || false
+export default async function EventsPage({ params }) {
+  const { slug } = await params;
+  const subpath = "/" + (slug?.join("/") ?? "");
+  if(!( subpath === "/" || subpath === "/past" )) redirect("/events");
+
+  const isPast = subpath === "/past";
   const events = await getEventPosts(isPast);
 
   return <main className="pt-[5rem] pb-[5rem] relative min-h-[100vh]">

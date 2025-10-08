@@ -1,0 +1,63 @@
+body {
+  background-color: #ddd;
+  color: black;
+  font-family: sans-serif;
+}
+
+main.refreshpage {
+  max-width: 80ch;
+  margin: auto;
+  padding-inline: 1rem;
+}
+
+main.refreshpage form {
+  padding: 0;
+  margin-bottom: 4rem;
+}
+
+main.refreshpage input[type="checkbox"] {
+  --size: 1.2rem;
+  height: var(--size);
+  width: var(--size);
+  cursor: pointer;
+}
+
+main.refreshpage label {
+  cursor: pointer;
+}
+
+main.refreshpage div:has(label) {
+  display: flex;
+  align-items: center;
+  margin-block: 0.2rem;
+}
+
+main.refreshpage input[type="submit"] {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: .5rem;
+  cursor: pointer;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  box-shadow:
+    inset 0px 1px 2px #ddd,
+    inset 0px -1px 2px #888;
+}
+
+main.refreshpage input[type="submit"]:active {
+  box-shadow: inset 0px 1px 2px #ddd;
+}
+
+main.refreshpage h3 {
+  margin-block: 0;
+}
+
+main.refreshpage p.failed {
+  color: red;
+  font-weight: bold;
+}
+
+main.refreshpage p.success {
+  color: green;
+  font-weight: bold;
+}
