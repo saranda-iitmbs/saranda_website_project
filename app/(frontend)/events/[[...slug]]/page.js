@@ -37,7 +37,7 @@ export default async function EventsPage({ params }) {
       </p>
     )}
     {!isPast && <div className="w-9/10 max-w-[120ch] mx-auto mb-[2rem]">
-      <CTAButton href="/events?past=true">Past Events &gt;</CTAButton>
+      <CTAButton href="/events/past">Past Events &gt;</CTAButton>
     </div>}
   </main>;
 }
