@@ -17,43 +17,47 @@ export default function LandingPageSections({
   return <>
     <main
       className={twJoin(
-        "min-h-[100vh] relative overflow-hidden *:h-[100vh]",
+        "relative",
         className
       )}
       id={landing_page_sections_id}
       {...props}
     >
       <div
-        className="h-[100vh] w-screen absolute -z-1"
+        className="absolute inset-0"
         id={landing_page_bg_container_id}
       >
         <Image
           id={mist_forest_img_id}
           src={mist_forest_img}
-          alt="Forest Background"
-          fill
+          alt=""
           sizes="100vw"
           placeholder="blur"
-          className="object-cover h-[100vh] w-screen scale-125"
+          className="object-cover w-screen h-screen sticky top-0"
         ></Image>
+      </div>
+      <div
+        className="absolute inset-0"
+        // id={landing_page_bg_container_id}
+      >
         <Image
           src={lone_tree_img}
           alt="Lone Tree"
           sizes="100vw"
           className="
-            object-fill h-[100vh] max-w-none w-screen
+            object-fill w-screen h-screen sticky top-0
           "
           id={lone_tree_img_id}
         ></Image>
       </div>
       {children}
     </main>
-
+{/* 
     <LandingPageSectionsBgAnimation
       landing_page_sections_id = {landing_page_sections_id}
       landing_page_bg_container_id = {landing_page_bg_container_id}
       lone_tree_img_id = {lone_tree_img_id}
       mist_forest_img_id = {mist_forest_img_id}
-    />
+    /> */}
   </>
 }

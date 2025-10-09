@@ -58,6 +58,7 @@ const navbarOptions = [
 export default function Header({ className = "", navClassName = "" }) {
   const [sidebarOpend, setSidebarOpened] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
+  const [positionType, setPositionType] = useState("absolute");
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const closeSidebar = () => setSidebarOpened(false);
@@ -74,17 +75,24 @@ export default function Header({ className = "", navClassName = "" }) {
       setLastScrollY(currentScrollY);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    setPositionType("fixed")
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      setPositionType("absolute");
+    }
   }, [lastScrollY]);
 
   return <>
     <header
       className={twJoin(
         `grid md:grid-cols-[1fr_7fr_1fr] grid-cols-[1fr_1fr] items-center
-        px-[2rem] md:px-[1rem] py-[0.5rem] text-primary fixed
+        px-[2rem] md:px-[1rem] py-[0.5rem] text-primary
         z-500 w-full backdrop-blur-3xl bg-neutral-light/20 transition-transform
         duration-300`,
         showHeader ? "translate-y-0" : "-translate-y-full",
+        positionType,
         className
       )}
     >

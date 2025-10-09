@@ -1,17 +1,7 @@
 import Image from "next/image"
-import Link from "next/link"
 import { twJoin } from "tailwind-merge";
 import { getCommunityCards } from "@/lib/cmsdata";
-
-const CARDS_QUERY = `
-  *[_type == "community_card"] | order(_createdAt asc) {
-    title,
-    description,
-    href,
-    "img_src": image.asset->url,
-  }
-`
-
+import CTAButton from "./CTAButton";
 
 export default async function CommunitiesSection({
   className = "",
@@ -26,33 +16,28 @@ export default async function CommunitiesSection({
     <div
       id={communities_section_id}
       className={twJoin(
-        "flex justify-center items-center p-1",
+        "flex justify-center items-center p-1 min-h-[100vh]",
         className
       )}
       {...props}
     >
       <div
         className={twJoin(
-          `green-glass-container w-full md:w-8/10 max-md:h-full h-8/10 grid
-          grid-rows-[1fr_4fr]`,
+          `green-glass-container w-full md:w-8/10 max-md:min-h-full
+          min-h-[80vh] py-[4rem] px-[2rem]`,
           innerClassName
         )}
         {...innerProps}
       >
-        <h2 className="text-center self-center">
+        <h2 className="text-center self-center mb-[2rem]">
           Our Communities
         </h2>
         <div className="
-          md:flex md:flex-row w-full justify-center items-center md:gap-[5rem]
-          flex-wrap max-md:grid max-md:grid-flow-row gap-[2rem]
+          mx-auto w-full max-w-[120ch]
         ">
-          {cards_data.map(card => <CommunityCard
-            title={card["title"]}
-            description={card["description"]}
-            img_src={card["img_src"]}
-            href={card["href"]}
+          {cards_data.map((card, index) => <CommunityCard
             card={card}
-            key={cards_data.indexOf(card)}
+            key={index}
           />)}
         </div>
       </div>
@@ -62,35 +47,33 @@ export default async function CommunitiesSection({
 
 
 function CommunityCard({
-  img_src = "https://placehold.co/10/gray/gray/png",
   card,
   className = "",
   ...props
 }) {
-  return <Link
+  return <div
     className={twJoin(
-      `relative flex aspect-square w-[calc(10rem+6dvw)] p-[1rem] box-content
-      rounded-xl overflow-clip items-center flex-col justify-end
-      hover:[&_p]:h-full hover:[&_div.blackdiv]:bg-black/50`,
+      `grid md:grid-cols-[min(100%,18rem)_auto] p-[2rem] gap-[1rem] border-1
+      rounded-2xl border-neutral-light hover:border-secondary mb-[4rem]`,
       className
     )}
     {...props}
   >
-    <Image
-      // src={img_src}
-      {...card.img}
-      alt="Community Poster"
-      fill
-      sizes="(max-width: 768px) 100vw, 40vw"
-      className="object-cover -z-1"
-    />
-    <div className="
-      bg-black/25 absolute top-0 left-0 right-0 bottom-0 blackdiv
-      duration-200
-    "></div>
-    <h3 className="text-center z-1">{card.title}</h3>
-    <p className="h-0 overflow-clip z-1 duration-500 ease-out">
-      {card.description}
-    </p>
-  </Link>
+    <div className="relative w-full aspect-square rounded-xl overflow-clip">
+      <Image
+        {...card.img}
+        alt="Community Poster"
+        fill
+        sizes="(max-width: 768px) 100vw, 40vw"
+        className="object-cover"
+      />
+    </div>
+    <div>
+      <h3>{card.title}</h3>
+      <p className="mt-[0.5ch] mb-[2ch]">
+        {card.description}
+      </p>
+      <CTAButton href={card.href}>Community Page</CTAButton>
+    </div>
+  </div>
 }

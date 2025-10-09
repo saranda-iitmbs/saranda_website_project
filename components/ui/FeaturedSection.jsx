@@ -10,86 +10,61 @@ export default async function FeaturedSection({
   innerProps = {},
   ...props
 }) {
-  const img_urls = await getFeaturedPhotos();
+  const photos = await getFeaturedPhotos();
 
   return <>
     <div
       id="featured_section_id"
       className={twJoin(
-        `featured-section flex justify-center items-center relative`,
+        `featured-section flex justify-center items-center relative h-[100vh]`,
         className
       )}
       {...props}
     >
-      <PhotoGrid
-        img_urls={img_urls || []}
-        className={innerClassName}
-        {...innerProps}
-      />
+      <PhotoGrid photos={photos}></PhotoGrid>
       <CTAContainer/>
     </div>
   </>
 }
 
 
-function PhotoGrid({img_urls, className="", ...props}) {
-  let index = 0;
-  img_urls.length = 7;
-
-  // FIX THIS MESS
-  // IMAGE OPTIMIZATION MISSING
-
+function PhotoGrid({photos=[], className="", ...props}) {
+  const area_classes = [
+      "[grid-area:tl] lg:hover:-translate-y-1/10 lg:hover:-translate-x-1/10",
+      "[grid-area:tr] lg:hover:-translate-y-1/10 lg:hover:translate-x-1/10",
+      "[grid-area:midtl] lg:hidden",
+      "[grid-area:midtr] lg:hidden",
+      "[grid-area:midbl] lg:hidden",
+      "[grid-area:midbr] lg:hidden",
+      "[grid-area:bl] lg:hover:translate-y-1/10 lg:hover:-translate-x-1/10",
+      "[grid-area:br] lg:hover:translate-y-1/10 lg:hover:translate-x-1/10",
+  ]
   return <>
     <div
       className={twJoin(
-        `h-full md:h-8/10 w-full md:w-8/10 xl:w-6/10 grid grid-cols-5
-        grid-rows-4 gap-1 *:border-4 *:border-neutral-light *:hover:z-2
-        [&_img]:object-cover *:z-1 md:*:hover:[scale:120%] *:duration-200
-        **:rounded-xl mx-2`,
+        `h-full lg:h-8/10 w-full lg:w-8/10 xl:w-6/10 featured-photo-grid
+        gap-1 mx-2`,
         className
       )}
       {...props}
     >
-      <div className="
-        landscape:[grid-area:1/1/3/3] landscape:hover:-translate-x-1/10
-        landscape:hover:-translate-y-1/10 [grid-area:1/1/2/3] relative
-      ">
-        <Image src={img_urls[index++] || "https://placehold.co/10/gray/gray/png"} alt="Photo" fill/>
-      </div>
-      <div className="
-        landscape:[grid-area:1/3/3/6] landscape:hover:translate-x-1/10
-        landscape:hover:-translate-y-1/10 [grid-area:1/3/2/6] relative
-      ">
-        <Image src={img_urls[index++] || "https://placehold.co/10/gray/gray/png"} alt="Photo" fill/>
-      </div>
-      <div className="
-        [grid-area:2/1/3/4] landscape:hidden relative
-      ">
-        <Image src={img_urls[index++] || "https://placehold.co/10/gray/gray/png"} alt="Photo" fill/>
-      </div>
-      <div className="
-        [grid-area:2/4/3/6] landscape:hidden relative
-      ">
-        <Image src={img_urls[index++] || "https://placehold.co/10/gray/gray/png"} alt="Photo" fill/>
-      </div>
-      <div className="
-        [grid-area:3/1/4/4] landscape:hover:translate-x-1/10
-        landscape:hover:translate-y-1/10 landscape:hidden relative
-      ">
-        <Image src={img_urls[index++] || "https://placehold.co/10/gray/gray/png"} alt="Photo" fill/>
-      </div>
-      <div className="
-        landscape:[grid-area:3/1/5/4] landscape:hover:-translate-x-1/10
-        landscape:hover:translate-y-1/10 [grid-area:4/1/5/4] relative
-      ">
-        <Image src={img_urls[index++] || "https://placehold.co/10/gray/gray/png"} alt="Photo" fill/>
-      </div>
-      <div className="
-        [grid-area:3/4/5/6] landscape:hover:translate-x-1/10
-        landscape:hover:translate-y-1/10 relative
-      ">
-        <Image src={img_urls[index++] || "https://placehold.co/10/gray/gray/png"} alt="Photo" fill/>
-      </div>
+      {photos.img.map((img, index) => (
+        <div
+          className={twJoin(
+            `relative lg:hover:scale-120 duration-200 rounded-xl overflow-clip
+            border-neutral-light/50 lg:border-6 border-2`,
+            area_classes[index]
+          )}
+          key={index}
+        >
+          <Image
+            {...img}
+            alt="Memorable Photo"
+            sizes="(max-width: 1024px) 60vw, 40vw"
+            className="absolute object-fill min-w-full min-h-full"
+          />
+        </div>
+      ))}
     </div>
   </>
 }
@@ -99,8 +74,7 @@ function CTAContainer({className="", ...props}) {
   return <>
     <div
       className={twJoin(
-        `absolute top-0 bottom-0 left-0 right-0 flex justify-center
-        items-center`,
+        `absolute content-center justify-center`,
         className
       )}
       {...props}

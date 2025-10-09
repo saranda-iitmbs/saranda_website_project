@@ -17,7 +17,7 @@ export default function AboutSection({
     <div
       id={about_section_id}
       className={twJoin(
-        "grid justify-center items-center p-1",
+        "grid justify-center items-center p-1 h-[100vh]",
         className
       )}
       {...props}

@@ -8,13 +8,14 @@ import { twJoin } from "tailwind-merge";
 export default function Hero({className, ...props}) {
   const hero_section_id = "hero"
   const lush_forest_back_id = "lush_forest_back_id"
-  const the_saranda_text_id = "the_sranda_text_id"
+  const lush_forest_front_id = "lush_forest_front_id"
+  const the_saranda_text_id = "the_saranda_text_id"
 
   return <>
     <main
       id={hero_section_id}
       className={twJoin(
-        `h-[100vh] overflow-y-hidden relative`,
+        `h-[100vh] overflow-y-clip relative`,
         className
       )}
       {...props}
@@ -29,31 +30,39 @@ export default function Hero({className, ...props}) {
         className="-z-1 object-cover"
       />
       <div
-        id={the_saranda_text_id}
-        className="
-          text-center h-full flex flex-col justify-center translate-y-[-15%]
-          text-primary uppercase
-        "
+        className="h-full animate-heroslideup"
       >
-        <h1 className="mb-[-0.4ch]">Saranda</h1>
-        <p className="text-base lg:text-xl font-bold">
-          THE HOUSE OF EXCELLENCE AND INNOVATION
-        </p>
+        <div
+          id={the_saranda_text_id}
+          className="
+            text-center h-full flex flex-col justify-center text-primary
+            uppercase -translate-y-1/5 animate-heroslidedown
+          "
+        >
+          <h1 className="mb-[-0.4ch]">Saranda</h1>
+          <p className="text-base lg:text-xl font-bold">
+            THE HOUSE OF EXCELLENCE AND INNOVATION
+          </p>
+        </div>
       </div>
-      <Image
-        src={lush_forest_front_img}
-        alt="Landing Page Foreground"
-        fill
-        sizes="100vw"
-        priority
-        placeholder="blur"
-        className="object-cover"
-      />
+      <div className="inset-0 absolute animate-treeslidedown">
+        <Image
+          id={lush_forest_front_id}
+          src={lush_forest_front_img}
+          alt="Landing Page Foreground"
+          fill
+          sizes="100vw"
+          priority
+          placeholder="blur"
+          className="object-cover"
+        />
+      </div>
     </main>
 
     <HeroAnimation
       hero_section_id = {hero_section_id}
       lush_forest_back_id = {lush_forest_back_id}
+      lush_forest_front_id = {lush_forest_front_id}
       the_saranda_text_id = {the_saranda_text_id}
     />
   </>
