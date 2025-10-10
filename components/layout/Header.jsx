@@ -7,7 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import { twJoin } from "tailwind-merge";
 
 import { RiHome9Fill } from "react-icons/ri";
@@ -64,7 +64,7 @@ export default function Header({ className = "", navClassName = "" }) {
   const closeSidebar = () => setSidebarOpened(false);
   const openSidebar = () => setSidebarOpened(true);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       if (currentScrollY > lastScrollY && currentScrollY > 60) {
