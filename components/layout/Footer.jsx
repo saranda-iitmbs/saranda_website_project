@@ -8,19 +8,30 @@ import { twJoin } from "tailwind-merge";
 import { getExtraFooterLinks } from "@/lib/cmsdata";
 
 
-export default async function Footer({className="", innerClassName=""}) {
+export default async function Footer({
+  communities = [],
+  className="",
+  innerClassName=""
+}) {
   const {
     extra_contact_links,
     extra_quick_links,
     extra_useful_links,
   } = await getExtraFooterLinks();
 
-  const all_contact_links =
-    footer_links["Contacts"].concat(extra_contact_links);
-  const all_quick_links =
-    footer_links["Quick Links"].concat(extra_quick_links);
-  const all_useful_links =
-    footer_links["Other Useful Links"].concat(extra_useful_links);
+  const all_contact_links = [
+    ...footer_links["Contacts"],
+    ...extra_contact_links,
+  ];
+  const all_quick_links = [
+    ...footer_links["Quick Links"],
+    ...communities.map(c => ({url: c.slug, text: c.title})),
+    ...extra_quick_links,
+  ]
+  const all_useful_links = [
+    ...footer_links["Other Useful Links"],
+    ...extra_useful_links,
+  ];
 
   return <>
     <footer

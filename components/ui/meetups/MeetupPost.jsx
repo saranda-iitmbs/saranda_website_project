@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import PhotoOverlay from "./PhotoOverlay";
+import PhotoOverlay from "@/components/ui/PhotoOverlay";
 import { twJoin } from "tailwind-merge";
 import Image from "next/image";
 

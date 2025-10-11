@@ -1,7 +1,8 @@
 import Image from "next/image"
 import { twJoin } from "tailwind-merge";
 import { getAllCommunities } from "@/lib/cmsdata";
-import CTAButton from "./CTAButton";
+import CTAButton from "../CTAButton";
+
 
 export default async function CommunitiesSection({
   className = "",

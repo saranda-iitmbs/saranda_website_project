@@ -1,6 +1,6 @@
 import Image from "next/image";
 import saranda_logo_mark_img from "@/public/images/saranda_logo_mark.svg"
-import AboutSEctionAnimation from "../gsapanimations/AboutSectionAnimation";
+import AboutSEctionAnimation from "../../gsapanimations/AboutSectionAnimation";
 import { twJoin } from "tailwind-merge";
 
 export default function AboutSection({
@@ -17,7 +17,7 @@ export default function AboutSection({
     <div
       id={about_section_id}
       className={twJoin(
-        "grid justify-center items-center p-1 h-[100vh]",
+        "grid justify-center items-center p-1 md:h-[100vh]",
         className
       )}
       {...props}
@@ -28,15 +28,18 @@ export default function AboutSection({
           `green-glass-container lg:px-[5rem] lg:py-[4rem] md:px-[3rem]
           md:py-[2rem] px-[1rem] py-[2rem] grid grid-cols-1
           md:grid-cols-2 gap-[1rem] lg:gap-[3rem] max-w-[120ch] relative
-          max-md:h-full overflow-clip max-md:items-start`,
+          max-md:h-full overflow-clip max-md:items-start]`,
           innerClassName
         )}
-        style={{"direction": "rtl"}}
+        style={{ direction: "rtl" }}
         {...innerProps}
       >
         <div
           id={about_content_container_id}
-          className="grid gap-y-[0.8rem] lg:gap-y-[1.5rem] items-center p-1"
+          className={`
+            grid gap-y-[0.8rem] lg:gap-y-[1.5rem] items-center p-1
+          `}
+          style={{ direction: "ltr" }}
         >
           <h2 className="text-center self-end">About Us</h2>
           <p className="text-left self-start">
@@ -51,9 +54,7 @@ export default function AboutSection({
         <Image
           src={saranda_logo_mark_img}
           alt="Saranda Logo"
-          className="
-            max-md:absolute max-md:bottom-0 max-md:-z-1 max-md:scale-90
-          "
+          className=" max-md:scale-90 "
         />
       </div>
     </div>

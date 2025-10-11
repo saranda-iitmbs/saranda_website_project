@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import PhotoOverlay from "./PhotoOverlay";
+import PhotoOverlay from "@/components/ui/PhotoOverlay";
 import Image from "next/image"
-import CTAButton from "./CTAButton"
+import CTAButton from "@/components/ui/CTAButton"
 import { PortableText } from "next-sanity"
 import { twJoin } from "tailwind-merge";
 

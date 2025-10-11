@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CTAButton from "./CTAButton";
+import CTAButton from "../CTAButton";
 import { twJoin } from "tailwind-merge";
 import { getFeaturedPhotos } from "@/lib/cmsdata";
 

@@ -1,7 +1,7 @@
-import UHC from "@/components/ui/UHC";
+import UHC from "@/components/ui/know_us/UHC";
 import mist_forest_img from "@/public/images/mist_forest1.png"
 import Image from "next/image";
-import Team from "@/components/ui/Team";
+import Team from "@/components/ui/know_us/Team";
 import { getNonUHCTeams } from "@/lib/cmsdata";
 
 

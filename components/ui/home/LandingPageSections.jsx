@@ -37,7 +37,7 @@ export default function LandingPageSections({
         ></Image>
       </div>
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 portrait:hidden"
         // id={landing_page_bg_container_id}
       >
         <Image

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import mist_forest_img from "@/public/images/mist_forest2.png";
-import EventPost from "@/components/ui/EventPost";
+import EventPost from "@/components/ui/events/EventPost";
 import CTAButton from "@/components/ui/CTAButton";
 import { getEventPosts } from "@/lib/cmsdata";
 import { redirect } from "next/navigation";

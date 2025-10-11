@@ -1,6 +1,6 @@
 import Image from "next/image";
 import mist_forest_img from "@/public/images/mist_forest1.png";
-import MeetupPost from "@/components/ui/MeetupPost";
+import MeetupPost from "@/components/ui/meetups/MeetupPost";
 import { getMeetupPosts } from "@/lib/cmsdata";
 
 

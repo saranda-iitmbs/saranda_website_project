@@ -1,6 +1,6 @@
 import Image from "next/image";
 import mist_forest_img from "@/public/images/mist_forest1.png";
-import ArtGalleryPhotos from "@/components/ui/ArtGalleryPhotos";
+import ArtGalleryPhotos from "@/components/ui/art_gallery/ArtGalleryPhotos";
 import { getGalleryPictures } from "@/lib/cmsdata";
 
 

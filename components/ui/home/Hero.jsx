@@ -1,7 +1,7 @@
 import Image from "next/image";
 import lush_forest_back_img from "@/public/images/lush-forest-back.png";
 import lush_forest_front_img from "@/public/images/lush-forest-front.png";
-import HeroAnimation from "../gsapanimations/HeroAnimation";
+import HeroAnimation from "../../gsapanimations/HeroAnimation";
 import { twJoin } from "tailwind-merge";
 
 
