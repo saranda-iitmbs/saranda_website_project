@@ -14,7 +14,7 @@ export default function AboutSection({
   const about_content_container_id = "about_content_container_id"
 
   return <>
-    <div
+    <section
       id={about_section_id}
       className={twJoin(
         "grid justify-center items-center p-1 md:h-[100vh]",
@@ -57,7 +57,7 @@ export default function AboutSection({
           className=" max-md:scale-90 "
         />
       </div>
-    </div>
+    </section>
 
     <AboutSEctionAnimation
       about_section_id = {about_section_id}

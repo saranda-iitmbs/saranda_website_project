@@ -14,7 +14,7 @@ export default async function CommunitiesSection({
   const communities = await getAllCommunities({imgDimensions: false});
 
   return <>
-    <div
+    <section
       id={communities_section_id}
       className={twJoin(
         "flex justify-center items-center p-1 min-h-[100vh]",
@@ -42,7 +42,7 @@ export default async function CommunitiesSection({
           />)}
         </div>
       </div>
-    </div>
+    </section>
   </>
 }
 
@@ -54,8 +54,10 @@ function CommunityCard({
 }) {
   return <div
     className={twJoin(
-      `grid md:grid-cols-[min(100%,18rem)_auto] p-[2rem] gap-[1rem] border-1
-      rounded-2xl border-neutral-light hover:border-secondary mb-[4rem]`,
+      `grid md:grid-cols-[min(100%,18rem)_auto] p-[2rem] gap-[1rem] border-2
+      rounded-2xl border-neutral-light hover:border-secondary mb-[4rem]
+      hover:shadow-[0_0_.5rem_.2rem] hover:inset-shadow-[0_0_.5rem_.2rem]
+      shadow-white/10 inset-shadow-white/10`,
       className
     )}
     {...props}

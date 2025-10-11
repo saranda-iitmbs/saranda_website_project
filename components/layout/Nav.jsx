@@ -90,7 +90,6 @@ function DropDown({
 
   return (
     <div
-      href={href}
       {...props}
       className={twJoin(
         `px-[0.5rem] py-[0.5rem] text-left md:text-center relative
@@ -102,6 +101,11 @@ function DropDown({
       <Link href={href}>
         <button className={twJoin(
           `inline-flex gap-2 justify-stretch items-baseline`,
+          `after:absolute after:left-0 after:bottom-0 after:bg-secondary
+          after:-z-1 after:rounded-lg md:after:duration-200 active:after:top-0
+          active:after:right-0 md:hover:after:top-0 md:hover:after:right-0
+          hover:after:border-y-1 after:border-b-secondary-darker
+          after:border-t-secondary-ligher`,
           innerClassName
         )}>
           {children}

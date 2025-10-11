@@ -8,7 +8,6 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
 import { useState, useLayoutEffect } from "react";
 import { twJoin } from "tailwind-merge";
-
 import Nav from "./Nav";
 
 
@@ -69,7 +68,7 @@ export default function Header({
         />
       </Link>
       <Nav
-        className="max-md:hidden"
+        className={twJoin("max-md:hidden", navClassName)}
         onClick={closeSidebar}
         navbarOptions={navbarOptions}
       />
@@ -103,7 +102,11 @@ export default function Header({
           onClick={closeSidebar}
         />
       </div>
-      <Nav onClick={closeSidebar} navbarOptions={navbarOptions}/>
+      <Nav
+        className={navClassName}
+        onClick={closeSidebar}
+        navbarOptions={navbarOptions}
+      />
       <SocialLinks onClick={closeSidebar} />
     </header>
   </>;

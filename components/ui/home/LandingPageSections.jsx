@@ -1,7 +1,6 @@
 import Image from "next/image";
 import mist_forest_img from "@/public/images/mist_forest2.png";
 import lone_tree_img from "@/public/images/lone_tree.png";
-import { LandingPageSectionsBgAnimation } from "@/components/gsapanimations/LandingPageBgAnimations";
 import { twJoin } from "tailwind-merge";
 
 export default function LandingPageSections({
@@ -38,7 +37,6 @@ export default function LandingPageSections({
       </div>
       <div
         className="absolute inset-0 portrait:hidden"
-        // id={landing_page_bg_container_id}
       >
         <Image
           src={lone_tree_img}
@@ -52,12 +50,5 @@ export default function LandingPageSections({
       </div>
       {children}
     </main>
-{/* 
-    <LandingPageSectionsBgAnimation
-      landing_page_sections_id = {landing_page_sections_id}
-      landing_page_bg_container_id = {landing_page_bg_container_id}
-      lone_tree_img_id = {lone_tree_img_id}
-      mist_forest_img_id = {mist_forest_img_id}
-    /> */}
   </>
 }

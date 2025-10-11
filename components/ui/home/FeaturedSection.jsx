@@ -13,7 +13,7 @@ export default async function FeaturedSection({
   const photos = await getFeaturedPhotos();
 
   return <>
-    <div
+    <section
       id="featured_section_id"
       className={twJoin(
         `featured-section flex justify-center items-center relative h-[100vh]`,
@@ -23,7 +23,7 @@ export default async function FeaturedSection({
     >
       <PhotoGrid photos={photos}></PhotoGrid>
       <CTAContainer/>
-    </div>
+    </section>
   </>
 }
 

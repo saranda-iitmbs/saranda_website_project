@@ -51,7 +51,7 @@ export default function Hero({className, ...props}) {
           src={lush_forest_front_img}
           alt="Landing Page Foreground"
           fill
-          sizes="100vw"
+          sizes="(max-width: 768px) 200vw, 100vw"
           priority
           placeholder="blur"
           className="object-cover"

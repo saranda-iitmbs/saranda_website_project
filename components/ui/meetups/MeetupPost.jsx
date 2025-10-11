@@ -22,7 +22,7 @@ export default function({meetup, className="", children, ...props}) {
       <p className="font-bold mb-[0.8rem]">Date: {meetup.date}</p>
       <p className="mb-[1.5rem] leading-5">{meetup.description}</p>
       {children}
-      <div className="lg:columns-4 md:columns-3 columns-2 gap-[0.5rem]">
+      <div className="md:columns-3 columns-2 gap-[0.5rem]">
         {meetup.img && meetup.img.map((img,index) => (
           <Image
             onClick={e => setSelectedIndex(index)}
@@ -30,7 +30,10 @@ export default function({meetup, className="", children, ...props}) {
             alt=""
             sizes="(max-width: 768px) 50vw, (max-width: 1024px) 30vw, 20vw"
             key={index}
-            className="album-photo mb-[0.5rem] w-full"
+            className={twJoin(
+              "album-photo mb-[0.5rem] w-full",
+              (meetup.img.length === 4 && index == 2) && "mb-[2rem]"
+            )}
           />)
         )}
       </div>
