@@ -57,6 +57,7 @@ export default async function LostPage() {
     },
     {
       href: "/#communities_section_id",
+      pseudoHref: "/community",
       icon: <SiHomeassistantcommunitystore/>,
       text: "Communities",
       dropdown: communities.map(c => ({

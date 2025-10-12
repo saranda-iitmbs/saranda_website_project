@@ -6,7 +6,7 @@ import SocialLinks from "./SocialLinks";
 import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
-import { useState, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { twJoin } from "tailwind-merge";
 import Nav from "./Nav";
 
@@ -24,7 +24,7 @@ export default function Header({
   const closeSidebar = () => setSidebarOpened(false);
   const openSidebar = () => setSidebarOpened(true);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       if (currentScrollY > lastScrollY && currentScrollY > 60) {
@@ -75,7 +75,7 @@ export default function Header({
       <SocialLinks className="max-md:hidden md:justify-self-start" />
       <GiHamburgerMenu
         size={24}
-        className="justify-self-end md:hidden"
+        className="justify-self-end md:hidden active:text-secondary"
         onClick={openSidebar}
       />
     </header>
@@ -93,13 +93,14 @@ export default function Header({
     <header className={twJoin(
       `fixed inset-0 left-1/3 bg-neutral-dark-glass backdrop-blur-xl z-1000
       md:hidden px-[3rem] py-[3rem] text-neutral-light transition-transform
-      duration-300 ease-in-out`,
+      duration-300 ease-in-out overflow-y-scroll`,
       sidebarOpend ? "translate-x-0" : "translate-x-full"
     )}>
       <div className="flex justify-end">
         <RxCross2
           size={48}
           onClick={closeSidebar}
+          className="active:text-secondary"
         />
       </div>
       <Nav

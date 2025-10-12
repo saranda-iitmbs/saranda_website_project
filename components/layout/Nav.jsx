@@ -25,6 +25,7 @@ export default function Nav({
           </NavButton>
       : <DropDown
           href={o.href}
+          pseudoHref={o.pseudoHref}
           subButtons={o.dropdown}
           key={i}
           className="lg:mx-[1ch]"
@@ -34,6 +35,13 @@ export default function Nav({
         </DropDown>
     ))}
   </nav>
+}
+
+
+const areSameBasePath = (path, href) => {
+  let _path = path.replace(/\?.*/g);
+  if (href === "/") return _path === "/";
+  return _path.startsWith(href);
 }
 
 
@@ -54,17 +62,17 @@ function NavButton({
       className={twJoin(
         `px-[0.5rem] py-[0.4rem] text-left md:text-center relative
         block md:inline md:mx-0 lg:mx-[0] border-primary`,
-        `after:absolute after:left-0 after:bottom-0 after:bg-secondary
-        after:-z-1 after:rounded-lg md:after:duration-200 active:after:top-0
-        active:after:right-0 md:hover:after:top-0 md:hover:after:right-0
-        hover:after:border-y-1 after:border-b-secondary-darker
-        after:border-t-secondary-ligher`,
-        (path == href) && "max-md:text-secondary",
-        (path == href && !slidehorizontal) && "md:border-b-2",
+        `before:absolute before:left-0 before:bottom-0 before:bg-secondary
+        before:-z-1 before:rounded-lg md:before:duration-200 active:before:top-0
+        active:before:right-0 md:hover:before:top-0 md:hover:before:right-0
+        hover:before:border-y-1 before:border-b-secondary-darker
+        before:border-t-secondary-ligher`,
+        (areSameBasePath(path, href)) && "max-md:text-secondary",
+        (areSameBasePath(path, href) && !slidehorizontal) && "md:border-b-2",
         className,
         slidehorizontal
-          ? "after:top-0 after:right-[100%]"
-          : "after:top-[100%] after:right-0",
+          ? "before:top-0 before:right-[100%]"
+          : "before:top-[100%] before:right-0",
       )}
     >
       <button className={twJoin(
@@ -81,6 +89,8 @@ function NavButton({
 function DropDown({
   children = "",
   href = "#",
+  pseudoHref = "#",
+  slidehorizontal = false,
   subButtons = [],
   className = "",
   innerClassName = "",
@@ -92,7 +102,7 @@ function DropDown({
     <div
       {...props}
       className={twJoin(
-        `px-[0.5rem] py-[0.5rem] text-left md:text-center relative
+        `md:py-[0.5rem] text-left md:text-center relative
         border-primary block md:inline hover:[&_.dropdown]:grid md:mx-0
         lg:mx-[0.4rem]`,
         className
@@ -100,12 +110,18 @@ function DropDown({
     >
       <Link href={href}>
         <button className={twJoin(
-          `inline-flex gap-2 justify-stretch items-baseline`,
-          `after:absolute after:left-0 after:bottom-0 after:bg-secondary
-          after:-z-1 after:rounded-lg md:after:duration-200 active:after:top-0
-          active:after:right-0 md:hover:after:top-0 md:hover:after:right-0
-          hover:after:border-y-1 after:border-b-secondary-darker
-          after:border-t-secondary-ligher`,
+          `px-[0.5rem] max-md:pt-[0.5rem] inline-flex gap-2 justify-stretch items-baseline relative`,
+        `before:absolute before:left-0 before:bottom-0 before:bg-secondary
+        before:-z-1 before:rounded-lg md:before:duration-200 active:before:top-0
+        active:before:right-0 md:hover:before:top-0 md:hover:before:right-0
+        hover:before:border-y-1 before:border-b-secondary-darker
+        before:border-t-secondary-ligher`,
+        (areSameBasePath(path, pseudoHref)) && "max-md:text-secondary",
+        (areSameBasePath(path, pseudoHref) && !slidehorizontal)
+          && "md:border-b-2",
+        slidehorizontal
+          ? "before:top-0 before:right-[100%]"
+          : "before:top-[100%] before:right-0",
           innerClassName
         )}>
           {children}

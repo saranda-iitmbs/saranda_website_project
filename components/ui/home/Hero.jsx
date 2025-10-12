@@ -36,7 +36,7 @@ export default function Hero({className, ...props}) {
           id={the_saranda_text_id}
           className="
             text-center h-full flex flex-col justify-center text-primary
-            uppercase -translate-y-1/5 animate-heroslidedown
+            uppercase -translate-y-15/100 animate-heroslidedown
           "
         >
           <h1 className="mb-[-0.4ch]">Saranda</h1>
@@ -52,7 +52,6 @@ export default function Hero({className, ...props}) {
           alt="Landing Page Foreground"
           fill
           sizes="(max-width: 768px) 200vw, 100vw"
-          priority
           placeholder="blur"
           className="object-cover"
         />

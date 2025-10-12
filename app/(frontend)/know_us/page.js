@@ -9,13 +9,15 @@ export default async function KnowUs() {
   const nonUHCTeams = await getNonUHCTeams();
 
   return <main className="relative pb-[2rem] min-h-[100vh]">
-    <Image
-      src={mist_forest_img}
-      alt=""
-      fill
-      sizes="100vw"
-      className="object-cover -z-1"
-    />
+    <div className="absolute inset-0 -z-1">
+      <Image
+        src={mist_forest_img}
+        alt=""
+        sizes="100vw"
+        placeholder="blur"
+        className="object-cover sticky w-screen h-screen top-0"
+      />
+    </div>
     <UHC/>
     {nonUHCTeams.map(team => <Team team={team} key={team._id}/>)}
   </main>

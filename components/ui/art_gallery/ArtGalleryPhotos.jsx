@@ -24,7 +24,7 @@ export default function ArtGalleryPhotos({
     <div
       className={twJoin(
         `w-full md:w-9/10 max-w-[80rem] mx-auto p-[1rem] text-neutral-light
-        mb-[2rem] pb-[4rem] md:columns-3 columns-2 gap-[0.5rem]`,
+        mb-[2rem] pb-[4rem] md:columns-3 columns-2 gap-[0.5rem] md:gap-[1rem]`,
         className
       )}
       {...props}
@@ -37,7 +37,10 @@ export default function ArtGalleryPhotos({
           alt=""
           sizes="(max-width: 768px) 50vw, (max-width: 1024px) 30vw, 20vw"
           onClick={e => setSelectedIndex(index)}
-          className="album-photo w-full mb-[0.5rem]"
+          className="
+            album-photo w-full mb-[0.5rem] md:border-[1rem] border-2
+            [border-image:url(/images/photoframe.jpg)_64] md:mb-[1rem]
+          "
         />
       ))}
     </div>

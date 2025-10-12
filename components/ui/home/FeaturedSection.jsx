@@ -59,9 +59,10 @@ function PhotoGrid({photos=[], className="", ...props}) {
         >
           <Image
             {...img}
+            fill
             alt="Memorable Photo"
             sizes="(max-width: 1024px) 60vw, 40vw"
-            className="absolute object-fill min-w-full min-h-full"
+            className="absolute object-cover min-w-full min-h-full"
           />
         </div>
       ))}

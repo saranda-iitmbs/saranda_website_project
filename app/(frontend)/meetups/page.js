@@ -8,13 +8,15 @@ export default async function Meetup() {
   const meetups = await getMeetupPosts();
 
   return <main className="pt-[5rem] pb-[5rem] relative min-h-[100vh]">
-    <Image
-      src={mist_forest_img}
-      alt=""
-      fill
-      sizes="100vw"
-      className="object-cover -z-1"
-    />
+    <div className="absolute inset-0 -z-1">
+      <Image
+        src={mist_forest_img}
+        alt=""
+        sizes="100vw"
+        placeholder="blur"
+        className="object-cover w-screen h-screen sticky top-0"
+      />
+    </div>
     <h2 className="text-center text-primary mb-[1rem]">
       Our Past Meetups
     </h2>

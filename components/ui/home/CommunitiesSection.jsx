@@ -24,7 +24,7 @@ export default async function CommunitiesSection({
     >
       <div
         className={twJoin(
-          `green-glass-container w-full md:w-8/10 max-md:min-h-full
+          `green-glass-container w-full lg:w-8/10 max-md:min-h-full
           min-h-[80vh] py-[4rem] px-[2rem]`,
           innerClassName
         )}
@@ -54,7 +54,7 @@ function CommunityCard({
 }) {
   return <div
     className={twJoin(
-      `grid md:grid-cols-[min(100%,18rem)_auto] p-[2rem] gap-[1rem] border-2
+      `grid sm:grid-cols-[min(100%,18rem)_auto] p-[2rem] gap-[1rem] border-2
       rounded-2xl border-neutral-light hover:border-secondary mb-[4rem]
       hover:shadow-[0_0_.5rem_.2rem] hover:inset-shadow-[0_0_.5rem_.2rem]
       shadow-white/10 inset-shadow-white/10`,
