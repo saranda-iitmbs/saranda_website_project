@@ -31,17 +31,24 @@ export default function ArtGalleryPhotos({
     >
       {children}
       {pictures.img.map((img, index) => (
-        <Image
+        <div
           key={index}
-          {...img}
-          alt=""
-          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 30vw, 20vw"
-          onClick={e => setSelectedIndex(index)}
           className="
-            album-photo w-full mb-[0.5rem] md:border-[1rem] border-2
+            album-photo w-full mb-[0.5rem] md:border-[1rem] border-4
             [border-image:url(/images/photoframe.jpg)_64] md:mb-[1rem]
+            shadow-[10px_5px_10px] shadow-black/40 relative
+            after:absolute after:inset-0 after:inset-shadow-black/10
+            after:inset-shadow-[8px_5px_10px] after:pointer-events-none
           "
-        />
+        >
+          <Image
+            {...img}
+            alt=""
+            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 30vw, 20vw"
+            onClick={e => setSelectedIndex(index)}
+            className=""
+          />
+        </div>
       ))}
     </div>
 

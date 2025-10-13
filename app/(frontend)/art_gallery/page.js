@@ -7,8 +7,10 @@ import { getGalleryPictures } from "@/lib/cmsdata";
 export default async function ArtGallery() {
   const pictures = await getGalleryPictures();
 
-  return <main className="pt-[5rem] pb-[5rem] relative min-h-[100vh]">
-    <div className="absolute inset-0 -z-1">
+  return <main className="
+    pt-[5rem] pb-[5rem] relative min-h-[100vh] bg-[#dbdbdb]
+  ">
+    {/* <div className="absolute inset-0 -z-1">
       <Image
         src={mist_forest_img}
         alt=""
@@ -16,7 +18,7 @@ export default async function ArtGallery() {
         placeholder="blur"
         className="object-cover w-screen h-screen sticky top-0"
       />
-    </div>
+    </div> */}
     <h2 className="text-center text-primary mb-[1rem]">
       Art Gallery
     </h2>
