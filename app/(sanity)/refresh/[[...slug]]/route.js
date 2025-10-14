@@ -12,11 +12,10 @@ export async function GET(req, { params }) {
 
 
 export async function POST(req, { params }) {
-  const { searchParams } = new URL(req.url);
-  const secret = searchParams.get("secret");
   const body = await req.json();
+  const password = body.password;
 
-  if (secret !== process.env.REVALIDATION_KEY) {
+  if (password !== process.env.REVALIDATION_KEY) {
     return new Response("Unauthorized", { status: 401 });
   }
 
