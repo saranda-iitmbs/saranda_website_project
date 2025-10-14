@@ -9,11 +9,11 @@ import { MdEmojiPeople } from "react-icons/md";
 import { FaPaintBrush } from "react-icons/fa";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
 import { IoMdMicrophone } from "react-icons/io";
-import { getAllCommunities } from "@/lib/cmsdata";
+import { getCommunityLinks } from "@/lib/cmsdata";
 
 
 export default async function RootLayout({ children }) {
-  const communities = await getAllCommunities({});
+  const communities = await getCommunityLinks();
 
   const navbarOptions = [
     {

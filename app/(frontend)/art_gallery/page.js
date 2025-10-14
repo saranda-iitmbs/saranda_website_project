@@ -10,15 +10,6 @@ export default async function ArtGallery() {
   return <main className="
     pt-[5rem] pb-[5rem] relative min-h-[100vh] bg-[#dbdbdb]
   ">
-    {/* <div className="absolute inset-0 -z-1">
-      <Image
-        src={mist_forest_img}
-        alt=""
-        sizes="100vw"
-        placeholder="blur"
-        className="object-cover w-screen h-screen sticky top-0"
-      />
-    </div> */}
     <h2 className="text-center text-primary mb-[1rem]">
       Art Gallery
     </h2>

@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { twJoin } from "tailwind-merge";
-import { getAllCommunities } from "@/lib/cmsdata";
+import { getCommunityCards } from "@/lib/cmsdata";
 import CTAButton from "../CTAButton";
 
 
@@ -11,13 +11,13 @@ export default async function CommunitiesSection({
   ...props
 }) {
   const communities_section_id = "communities_section_id"
-  const communities = await getAllCommunities({imgDimensions: false});
+  const cards = await getCommunityCards();
 
   return <>
     <section
       id={communities_section_id}
       className={twJoin(
-        "flex justify-center items-center p-1 min-h-[100vh]",
+        "flex justify-center items-center p-1 min-h-[100vh] pb-[1rem]",
         className
       )}
       {...props}
@@ -36,7 +36,7 @@ export default async function CommunitiesSection({
         <div className="
           mx-auto w-full max-w-[120ch]
         ">
-          {communities.map((card, index) => <CommunityCard
+          {cards.map((card, index) => <CommunityCard
             card={card}
             key={index}
           />)}
