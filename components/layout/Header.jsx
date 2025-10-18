@@ -62,7 +62,6 @@ export default function Header({
           alt="saranda"
           width={48}
           height={48}
-          placeholder="blur"
           sizes="(max-width: 768px) 20vw, (max-width: 1024px) 10vw, 5vw"
           className="drop-shadow-sm drop-shadow-primary"
         />
