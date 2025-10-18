@@ -12,6 +12,17 @@ export default defineType({
       validation: rule => rule.required().min(1).max(80),
     }),
     defineField({
+      name: "region",
+      type: "string",
+      validation: rule => rule.required(),
+      options: {
+        list: [
+          "patna", "chennai", "mumbai", "chandigarh", "kolkata", "lucknow",
+          "hyderabad", "delhi", "bengaluru",
+        ],
+      }
+    }),
+    defineField({
       name: "description",
       title: "Description",
       type: "text",

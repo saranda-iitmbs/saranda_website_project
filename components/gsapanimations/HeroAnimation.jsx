@@ -22,11 +22,11 @@ export default function HeroAnimation({
     });
 
     tl.to("#" + the_saranda_text_id, {
-      yPercent: 25,
+      yPercent: 30,
     }, 0);
 
     tl.to("#" + lush_forest_front_id, {
-      yPercent: -20,
+      yPercent: -15,
     }, 0);
   })
 
