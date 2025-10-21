@@ -54,6 +54,7 @@ export default function ArtGalleryPhotos({
 
     <PhotoOverlay
       pictures={pictures.img}
+      captions={pictures.images.map(p => p.caption)}
       selectedIndex={selectedIndex}
       setSelectedIndex={setSelectedIndex}
     />

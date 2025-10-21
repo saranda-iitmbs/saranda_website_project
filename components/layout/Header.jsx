@@ -49,7 +49,7 @@ export default function Header({
       className={twJoin(
         `grid md:grid-cols-[1fr_8fr_1fr] grid-cols-[1fr_1fr] items-center
         px-[2rem] md:px-[1rem] py-[0.5rem] text-primary z-500 w-full
-        backdrop-blur-3xl bg-neutral-light/20 transition-transform
+        backdrop-blur-3xl bg-neutral-light/40 transition-transform
         duration-300`,
         showHeader ? "translate-y-0" : "-translate-y-full",
         positionType,
