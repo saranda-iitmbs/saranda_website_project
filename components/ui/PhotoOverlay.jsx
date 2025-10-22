@@ -7,6 +7,7 @@ import Image from "next/image";
 
 export default function PhotoOverlay({
   pictures,
+  captions = [],
   selectedIndex,
   setSelectedIndex,
   className = "",
@@ -50,15 +51,37 @@ export default function PhotoOverlay({
       )}
       {...props}
     >
-      <div className="max-h-[80vh] max-w-[90vw]">
-        <Image
-          {...pictureAttr()}
-          alt="enlarged photo"
-          sizes="100vw"
-          className="rounded-lg shadow-xl object-contain w-auto h-full"
+      {
+        captions[selectedIndex]
+        && <div
+          className="
+            grid h-[80vh] w-[min(90vw,80rem)] max-md:overflow-y-auto gap-[1rem] 
+            md:grid-cols-[3fr_2fr] ax-md:grid-rows-2
+          "
           onClick={(e) => e.stopPropagation()}
-        />
-      </div>
+        >
+          <div className="w-full h-full relative">
+            <Image
+              {...pictureAttr()}
+              alt="enlarged photo"
+              sizes="100vw"
+              className="absolute inset-0 h-full w-full object-contain"
+            />
+          </div>
+          <div className="md:overflow-y-auto">
+            {captions[selectedIndex]}
+          </div>
+        </div>
+        || <div className="max-h-[80vh] max-w-[90vw]">
+          <Image
+            {...pictureAttr()}
+            alt="enlarged photo"
+            sizes="100vw"
+            className="rounded-lg shadow-xl object-contain w-auto h-full"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      }
       {children}
       {
         pictures.length > 1 &&
