@@ -12,12 +12,12 @@ export default async function ArtGallery() {
   "
     >
       <h2 className="text-center text-primary mb-[1rem]">Art Gallery</h2>
-      {/* {pictures.length == 0 ? (
+      <ArtGalleryClient />
+      {pictures.length == 0 ? (
         <p className="text-center my-[2rem] font-medium">No Art for now :(</p>
       ) : (
         <ArtGalleryPhotos pictures={pictures} />
-      )} */}
-       <ArtGalleryClient />
+      )}
     </main>
   );
 }
