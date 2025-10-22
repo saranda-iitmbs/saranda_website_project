@@ -34,6 +34,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${roboto.variable} ${redwood.variable}`}>
+    <head>
+      <meta name="google-site-verification" content="TNSYtDTfXmegrUjamV_Sr99pv19C2q7ojWZSH2YEFVg" />
+    </head>
       {children}
     </html>
   );
