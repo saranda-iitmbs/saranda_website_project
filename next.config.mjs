@@ -16,12 +16,23 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+      },
     ],
+    dangerouslyAllowLocalIP: true,
   },
 
   experimental: {
     globalNotFound: true,
-  }
+  },
+  
+  logging: {
+    fetches: {
+      fullUrl: true,
+    }
+  },
 };
 
 export default withPlaiceholder(nextConfig);

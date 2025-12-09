@@ -102,10 +102,4 @@ For any queries or issues related to the website, reach out to our web administr
 
 ---
 
-## License
-
-Licensed under the [MIT License](./LICENSE.md).
-
----
-
 Made with ❤️ by the **Saranda WebOps Team**
