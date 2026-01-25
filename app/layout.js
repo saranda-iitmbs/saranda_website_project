@@ -11,6 +11,7 @@ import { MdEmojiPeople } from "react-icons/md";
 import { FaExternalLinkAlt, FaPaintBrush } from "react-icons/fa";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
 import { IoMdMicrophone } from "react-icons/io";
+import { IoNewspaperOutline } from "react-icons/io5"; 
 import { getCommunityLinks } from "@/lib/cmsdata";
 import ScrollTopButton from "@/components/layout/ScrollTopButton";
 import { Analytics } from "@vercel/analytics/next"
@@ -89,6 +90,10 @@ export default async function RootLayout({ children }) {
       href: "/links",
       icon: <FaExternalLinkAlt/>,
       text: "Links",
+    },
+    { href: "/newsletter",
+      icon: <IoNewspaperOutline/>,
+      text: "Newsletter",
     },
   ]
 
