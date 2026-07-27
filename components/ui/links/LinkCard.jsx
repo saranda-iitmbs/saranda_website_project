@@ -18,7 +18,7 @@ export default function LinkCard({ card }) {
       <div className="relative shrink-0 w-20 h-20 rounded-full overflow-hidden bg-primary-darker/10 border-2 border-primary/20 group-hover:border-secondary/50 transition-all duration-300">
         {image && (
           <Image
-            src={urlFor(image).cropped.src || "https://placehold.co/png"}
+            src={urlFor(image).cropped || "https://placehold.co/png"}
             alt={title || "Card image"}
             fill
             sizes="80px"
