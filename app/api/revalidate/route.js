@@ -19,7 +19,8 @@ export async function POST(req) {
     "event": ["/events", "/events/past", "/events/current", "/meetups"],
     "meetup": [`/meetups/${data.region}`],
     "featuredphotos": ["/"],
-    "linktre": ["/links"],
+    // "linktre": ["/links"],
+    "linkCard": ["/links"],
     "community": ["/", `/community/${data.slug}`],
     "extra_footer_links": ["/"],
   }
