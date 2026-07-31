@@ -29,6 +29,10 @@
     {
       "url": "/art_gallery",
       "text": "Art Gallery"
+    },
+    {
+      "url": "/newsletter",
+      "text": "Newsletter"
     }
   ],
   "Other Useful Links": [
