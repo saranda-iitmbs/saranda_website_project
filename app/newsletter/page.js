@@ -1,19 +1,14 @@
-import { client } from "../../lib/sanity/client";
-import { queries } from "../../lib/sanity/queries";
+import { getNewsletters } from "../../lib/cmsdata";
 
 export const metadata = {
   title: "Newsletter | Saranda IITM BS",
 };
 
 export default async function NewsletterPage() {
-  const newsletters = await client.fetch(queries.newsletters.query);
+  const newsletters = await getNewsletters();
 
-  const sortedNewsletters = [...newsletters].sort(
-    (a, b) => new Date(b.date) - new Date(a.date)
-  );
-
-  const latest = sortedNewsletters[0];
-  const previous = sortedNewsletters.slice(1);
+  const latest = newsletters[0];
+  const previous = newsletters.slice(1);
 
   return (
     <main
