@@ -33,6 +33,8 @@ export default async function Footer({
     ...extra_useful_links,
   ];
 
+  const currentYear = new Date().getFullYear();
+
   return <>
     <footer
       className={twJoin(
@@ -83,7 +85,7 @@ export default async function Footer({
       </div>
 
       <p className="text-center mt-[1rem] mx-[-1rem] text-sm">
-        &copy; 2025 Saranda WebOps Team &middot; All Rights Reserved
+        &copy; {currentYear} Saranda WebOps Team &middot; All Rights Reserved
       </p>
     </footer>
   </>

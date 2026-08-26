@@ -19,15 +19,15 @@ export default async function NewsletterPage() {
     >
       <div className="absolute inset-0 bg-neutral-light/40 backdrop-blur-sm" />
 
-      <section className="relative z-10 max-w-7xl mx-auto px-6 py-20">
+      <section className="relative z-10 max-w-6xl mx-auto px-5 py-20">
 
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-redwood text-primary">
+        <div className="text-center mb-5">
+          <h1 className="text-4xl md:text-5xl font-redwood text-primary">
             Newsletter
           </h1>
 
-          <p className="mt-5 max-w-2xl mx-auto text-primary/70 text-lg">
+          <p className="mt-3 max-w-xl mx-auto text-primary/80 text-sm md:text-base font-semibold uppercase">
             Stay updated with the latest newsletters, announcements, and
             community updates.
           </p>
@@ -35,21 +35,24 @@ export default async function NewsletterPage() {
 
         {/* Latest */}
         {latest && (
-          <section className="mb-16">
-            <p className="text-sm uppercase tracking-widest text-primary/60 mb-3">
+          <section className="mb-4">
+            <p className="text-sm font-semibold fonr- uppercase tracking-widest text-primary/60 mb-2">
               Latest Newsletter
             </p>
 
-            <div className="bg-white/80 backdrop-blur-md rounded-2xl p-8 shadow-lg">
-              <h2 className="text-3xl md:text-4xl font-redwood text-primary">
+            <div className="bg-white/80 backdrop-blur-md rounded-2xl p-6 shadow-lg">
+              <h2 className="text-2xl md:text-3xl font-redwood text-primary">
                 {latest.title}
               </h2>
 
-              <p className="mt-2 text-primary/60">
-                {latest.date}
+              <p className="mt-1 text-sm">
+                {new Date(latest.date).toLocaleDateString("en-GB", {
+                  month: "short",
+                  year: "numeric",
+                })}
               </p>
 
-              <p className="mt-5 max-w-2xl text-primary/80">
+              <p className="mt-3 text-sm md:text-base">
                 {latest.description}
               </p>
 
@@ -57,7 +60,7 @@ export default async function NewsletterPage() {
                 href={latest.documentUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block mt-6 px-6 py-3 rounded-xl bg-primary text-white hover:opacity-90 transition"
+                className="inline-block mt-4 px-5 py-2.5 rounded-lg bg-primary text-sm text-white hover:opacity-90 transition"
               >
                 Read Newsletter →
               </a>
@@ -68,25 +71,28 @@ export default async function NewsletterPage() {
         {/* Previous */}
         {previous.length > 0 && (
           <section>
-            <h2 className="text-3xl font-redwood text-primary mb-8">
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary/60 mb-2">
               Previous Newsletters
-            </h2>
+            </p>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {previous.map((newsletter) => (
                 <article
                   key={newsletter._id}
-                  className="bg-white/75 backdrop-blur-md rounded-2xl p-6 shadow-md hover:shadow-xl transition"
+                  className="bg-white/75 backdrop-blur-md rounded-2xl p-5 shadow-md hover:shadow-xl transition"
                 >
-                  <h3 className="text-2xl font-redwood text-primary">
+                  <h3 className="text-xl md:text-2xl font-redwood text-primary">
                     {newsletter.title}
                   </h3>
 
-                  <p className="mt-2 text-sm text-primary/60">
-                    {newsletter.date}
+                  <p className="mt-1 text-xs">
+                    {new Date(newsletter.date).toLocaleDateString("en-GB", {
+                      month: "short",
+                      year: "numeric",
+                    })}
                   </p>
 
-                  <p className="mt-4 text-primary/70 line-clamp-3">
+                  <p className="mt-3 text-sm">
                     {newsletter.description}
                   </p>
 
@@ -94,7 +100,7 @@ export default async function NewsletterPage() {
                     href={newsletter.documentUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block mt-6 text-primary font-semibold hover:underline"
+                    className="inline-block mt-4 px-5 py-2.5 rounded-lg bg-primary text-sm text-white hover:opacity-90 transition"
                   >
                     Read Newsletter →
                   </a>
